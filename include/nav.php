@@ -1,20 +1,51 @@
 <nav class="w3-sidebar w3-bar-block w3-card w3-collapse" style="width: 200px">
 	<button class="w3-bar-item w3-button w3-hide-large w3-xxxlarge" onclick="w3_close()">Close &times;</button>
 	<div class="w3-container w3-dark-grey">
-	<h3>Dashboard</h3>
+		<h3>Dashboard</h3>
 	</div>
-	<a href="index.php" class="w3-bar-item w3-button <?php if($page_name == 'index.php'){echo 'w3-red';} ?>"><i class="fa fa-star"></i> Dashboard</a>
-	<a href="intern.php" class="w3-bar-item w3-button <?php if($page_name == 'intern.php'){echo 'w3-red';} ?>"><i class="fa fa-user"></i> Intern</a>
-	<a href="intern_file.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_file.php'){echo 'w3-red';} ?>"><i class="fa fa-file"></i> Intern File</a>
-	<a href="mou.php" class="w3-bar-item w3-button <?php if($page_name == 'mou.php'){echo 'w3-red';} ?>"><i class="fa fa-book"></i> Mou</a>
-	<a href="logout.php" class="w3-bar-item w3-button" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-sign-out"></i> Logout</a>
+
+	<!-- Menu dashboard -->
+	<a href="index.php" class="w3-bar-item w3-button <?php if($page_name == 'index.php'){echo 'w3-red';} ?>"><i class="fa fa-star w3-margin-right"></i>DASHBOARD</a>
+
+	<!-- Menu Intern -->
+	<a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' ){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>INTERNS<i class="w3-margin-left fa fa-caret-down"></i></a>
+
+	<div id="Demo2" class="w3-hide w3-animate-left <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' ){echo 'w3-show';} ?>">
+		<a href="intern.php" class="w3-bar-item w3-button <?php if($page_name == 'intern.php'){echo 'w3-red';} ?>"><i class="fa fa-user w3-margin-right"></i>Intern</a>
+		<a href="intern_file.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_file.php'){echo 'w3-red';} ?>"><i class="fa fa-file w3-margin-right"></i>Intern File</a>
+	</div>
+
+	<!-- Menu MOU -->
+	<a href="mou.php" class="w3-bar-item w3-button <?php if($page_name == 'mou.php'){echo 'w3-red';} ?>"><i class="fa fa-book w3-margin-right"></i>MOU & MOA</a>
+
+	<!-- Menu Ais -->
+	<a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' ){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>AIS<i class="w3-margin-left fa fa-caret-down"></i></a>
+
+	<div id="Demo1" class="w3-hide w3-animate-left <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' | $page_name == 'ais_periode_tahun.php' ){echo 'w3-show';} ?>">
+		<a href="ais_periode_tahun.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_periode_tahun.php'){echo 'w3-red';} ?>"><i class="fa fa-gear w3-margin-right"></i>Periode Tahun</a>
+		<a href="ais_peserta.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_peserta.php'){echo 'w3-red';} ?>"><i class="fa fa-user w3-margin-right"></i>Peserta</a>
+		<a href="ais_kelompok.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_kelompok.php'){echo 'w3-red';} ?>"><i class="fa fa-users w3-margin-right"></i>Kelompok</a>
+		<a href="ais_berangkat.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_berangkat.php'){echo 'w3-red';} ?>"><i class="fa fa-plane w3-margin-right"></i>Berangkat</a>
+		<a href="ais_pulang.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_pulang.php'){echo 'w3-red';} ?>"><i class="fa fa-plane w3-margin-right"></i>Pulang</a>
+	</div>
+
+	<!-- Menu conference -->
+	<a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'conference_email.php' ){echo 'w3-grey';} ?>"><i class="fa fa-trophy w3-margin-right"></i>CONFERENCE<i class="w3-margin-left fa fa-caret-down"></i></a>
+
+	<div id="Demo3" class="w3-hide w3-animate-left <?php if($page_name == 'conference_email.php' ){echo 'w3-show';} ?>">
+		<a href="conference_email.php" class="w3-bar-item w3-button <?php if($page_name == 'conference_email.php'){echo 'w3-red';} ?>"><i class="fa fa-envelope w3-margin-right"></i>Email Univ</a>
+	</div>
+
+	<!-- menu logout -->
+	<a href="logout.php" class="w3-bar-item w3-button w3-black" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-sign-out w3-margin-right"></i>Logout</a>
+
 </nav>
 
 <div class="w3-main" style="margin-left: 200px;">
-	
-<div class="w3-padding w3-red w3-card w3-large" >
-  <button class="w3-button w3-red w3-large" onclick="w3_open()">&#9776;</button>
-  dashbaord
-</div>
 
-<div class="w3-container" style="margin-top: 20px">
+	<div class="w3-padding w3-red w3-card w3-large" >
+		<button class="w3-button w3-red w3-large w3-hide-large" onclick="w3_open()">&#9776;</button>
+		dashbaord
+	</div>
+
+	<div class="w3-container" style="margin-top: 20px">

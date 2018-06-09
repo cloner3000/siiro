@@ -9,6 +9,7 @@ include "../include/header.php";
 	$xcrud->table('mou');
 	$xcrud->table_name('Data MOU');
 	$xcrud->change_type('scan', 'image');
+	$xcrud->validation_required('document_id,partner');
 	$xcrud->fields('id_user,tanggal_input', true, false, 'create');
 	$xcrud->columns('id_user,tanggal_input', true);
 	$xcrud->pass_var('id_user', $username);

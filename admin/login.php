@@ -25,11 +25,12 @@ require '../include/database.php';
               $result = mysqli_query($conn,$sql);
               $row = mysqli_fetch_assoc($result);
               if(mysqli_num_rows($result) > 0){
-              $_SESSION['username'] = $user;
-              $_SESSION['foto'] = $row['admin_foto'];
-              $_SESSION['nama'] = $row['admin_nama'];
-            // Redirect user to index.php
-              header("Location: index.php");
+                $_SESSION['username'] = $user;
+                $_SESSION['foto'] = $row['admin_foto'];
+                $_SESSION['nama'] = $row['admin_nama'];
+                $_SESSION['ais_periode_tahun'] = date('Y');
+                // Redirect user to index.php
+                header("Location: index.php");
               }else{
               echo '
               <div class="w3-padding w3-red">Username atau Password Salah</div>

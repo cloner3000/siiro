@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2018 at 10:34 AM
+-- Generation Time: Jun 09, 2018 at 07:14 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -21,6 +21,149 @@ SET time_zone = "+00:00";
 --
 -- Database: `siiro`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ais_berangkat`
+--
+
+CREATE TABLE `ais_berangkat` (
+  `id` int(11) NOT NULL,
+  `kelompok` varchar(255) NOT NULL,
+  `ketua` varchar(255) NOT NULL,
+  `anggota` varchar(255) NOT NULL,
+  `nomor_penerbangan` varchar(255) NOT NULL,
+  `tanggal_berangkat` date NOT NULL,
+  `keterangan` text NOT NULL,
+  `periode_tahun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ais_kelompok`
+--
+
+CREATE TABLE `ais_kelompok` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `keterangan` text NOT NULL,
+  `periode_tahun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ais_kelompok`
+--
+
+INSERT INTO `ais_kelompok` (`id`, `nama`, `jenis`, `keterangan`, `periode_tahun`) VALUES
+(1, 'Sistem Infomrasi 1', '', '', 0),
+(2, 'Panitia', '', '', 0),
+(4, 'TI 1', '', '', 2018),
+(5, 'TI 2', '', '', 2018),
+(6, 'TI 3', '', '', 2018),
+(7, 'TI 4', '', '', 2018),
+(8, 'TI 5', '', '', 2018),
+(9, 'TI 6', '', '', 2018),
+(10, 'TI 7', '', '', 2018),
+(11, 'TI 8', '', '', 2018),
+(12, 'TI 9', '', '', 2018),
+(13, 'TI 10', '', '', 2018);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ais_peserta`
+--
+
+CREATE TABLE `ais_peserta` (
+  `id` int(11) NOT NULL,
+  `kelompok` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `tempat_lahir` varchar(255) NOT NULL,
+  `jurusan` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `nomor_hp` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `nomor_ktp` varchar(255) NOT NULL,
+  `scan_ktp` varchar(255) NOT NULL,
+  `nomor_paspor` varchar(255) NOT NULL,
+  `scan_paspor` varchar(255) NOT NULL,
+  `periode_tahun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ais_peserta`
+--
+
+INSERT INTO `ais_peserta` (`id`, `kelompok`, `status`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jurusan`, `email`, `nomor_hp`, `alamat`, `nomor_ktp`, `scan_ktp`, `nomor_paspor`, `scan_paspor`, `periode_tahun`) VALUES
+(9, '4', 'Peserta', 'M. Anton Permana', '0000-00-00', '', 'Teknik Informatika', 'anton.permana@nusaputra.ac.id', '', '', '', '', '', '', 2018),
+(10, '4', 'Peserta', 'Agham Rahmadi Setiawan', '0000-00-00', '', 'Teknik Informatika', 'agham.rahmadi@nusaputra.ac.id', '', '', '', '', '', '', 2018),
+(12, '4,13', 'Pembimbing', 'Dedi Supardi, ST,M.Kom', '0000-00-00', '', '', 'dedi.supardi@nusaputra.ac.id', '', '', '', '', '', '', 2018),
+(13, '4', 'Peserta', 'Aryo Ardianto', '0000-00-00', '', 'Teknik Informatika', 'aryo.ardianto@nusaputra.ac.id', '', '', '', '', '', '', 2018),
+(14, '4', 'Peserta', 'Aditya Rachmawan', '0000-00-00', '', 'Teknik Informatika', 'aditya.rachmawan@nusaputra.ac.id', '', '', '', '', '', '', 2018);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ais_pulang`
+--
+
+CREATE TABLE `ais_pulang` (
+  `id` int(11) NOT NULL,
+  `kelompok` varchar(255) NOT NULL,
+  `ketua` varchar(255) NOT NULL,
+  `anggota` varchar(255) NOT NULL,
+  `nomor_penerbangan` varchar(255) NOT NULL,
+  `tanggal_pulang` date NOT NULL,
+  `keterangan` text NOT NULL,
+  `periode_tahun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conference_email`
+--
+
+CREATE TABLE `conference_email` (
+  `id` int(11) NOT NULL,
+  `negara` varchar(255) NOT NULL,
+  `nama_university` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `conference_email`
+--
+
+INSERT INTO `conference_email` (`id`, `negara`, `nama_university`, `email`, `alamat`) VALUES
+(2, 'Thailand', 'Mahidol University', 'opwww@mahidol.ac.th', '999 Phutthamonthon Sai 4 Rd, Tambon Salaya, Amphoe Phutthamonthon, Chang Wat Nakhon Pathom 73170, Thailand'),
+(3, 'Thailand', 'Chulalongkorn University', 'int.off@chula.ac.th', 'Mahatheerarachanusorn Building, Chulalongkorn University, 254 Phayathai Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thailand'),
+(4, 'Thailand', 'Chiang Mai University', 'prcmu239@gmail.com', 'Su Thep, Mueang Chiang Mai District, Provinsi Chiang Mai 50200, Thailand'),
+(5, 'Thailand', 'Kasetsart University', 'www@ku.ac.th', '50 Thanon Ngamwongwan, Khwaeng Lat Yao, Khet Chatuchak, 10900, Thailand'),
+(6, 'Thailand', 'Khon Kaen University', 'jittkr@kku.ac.th', 'Khon Kaen University (KKU) 123 Moo 16 Mittapap Rd., Nai-Muang, Muang District, Khon Kaen 40002,Thailand'),
+(7, 'Thailand', 'Prince of Songkla University', 'psu-international@psu.ac.th', '15 Karnjanavanich Rd., Hat Yai, Songkhla 90110  Tel: 66 74 282000 (Operator), 66 74 446824 (International Office). Fax: 66 74 446825'),
+(8, 'Thailand', 'Suranaree University of Technology', 'pr@sut.ac.th', '111, Thanon Maha Witthayalai, Suranari, Mueang Nakhon Ratchasima District, Nakhon Ratchasima 30000, Thailand'),
+(9, 'Thailand', 'King Mongkut\'s University of Technology Thonburi', 'info@kmutt.ac.th', '126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140, Thailand'),
+(10, 'Thailand', 'Thammasat University', 'cia@tbs.tu.ac.th', 'Khwaeng Phra Borom Maha Ratchawang, Khet Phra Nakhon, Krung Thep Maha Nakhon 10200, Thailand'),
+(11, 'Thailand', 'Naresuan University', 'international@nu.ac.th', 'Naresuan University Phitsanulok 65000 Thailand Telephone: +66 5596 1000 Fax: +66 5596 1103'),
+(12, 'Thailand', 'King Mongkut\'s Institute of Technology Ladkrabang', 'pr.kmitl@kmitl.ac.th', 'KMITL Lat Krabang, Bangkok 10520, Thailand'),
+(13, 'Thailand', 'Asian Institute of Technology Thailand', 'omco@ait.ac.th', '58 Moo 9 - Paholyothin Highway, Khlong Nueng, Pathum Thani 12120, Thailand'),
+(14, 'Thailand', 'Srinakharinwirot University', 'ird@swu.ac.th', 'Office of the President, Srinakharinwirot University 114 Sukhumvit 23, Wattana District, Bangkok 10110, THAILAND'),
+(15, 'Thailand', 'Burapha University', 'wmaster@buu.ac.th', 'Burapha University, 169 Longhaad Bangsaen Road, Saensook, Mueang, ChonBuri 20131'),
+(16, 'Thailand', 'Mahasarakham University', 'iroffice@msu.ac.th', 'Khamriang Sub-District,  Kantarawichai District,  Maha Sarakham 44150 Thailand'),
+(17, 'Thailand', 'Silpakorn University', 'SOPONPONGPIPAT_N@SU.AC.TH', '31 Na Phra Lan Rd, Phra Borom Maha Ratchawang, Phra Nakhon,10200, Thailand'),
+(18, 'Thailand', 'Mae Fah Luang University', 'inter@mfu.ac.th', '333 Moo 1, Tha Suea Muang Amphoe Mueang Chiang Rai, Chang Wat Chiang Rai 57100, Thailand'),
+(19, 'Thailand', 'King Mongkut\'s University of Technology North Bangkok', 'icop@kmutnb.ac.th', '1518 Pracharat 1 Road,Wongsawang, Bangsue, Bangkok 10800  Tel. +66 2 555-2000 Fax +66 2 587-4350'),
+(20, 'Thailand', 'Rangsit University', 'rsuip@rsu.ac.th', '52/347 Muang-Ake Phaholyothin Road Lak-Hok Muang Pathum Thani 12000, Thailand'),
+(21, 'Thailand', 'Mahanakorn University of Technology', 'inter@mutacth.com', '140 Cheum-Sampan Road,  Nongchok, Bangkok 10530'),
+(22, 'Thailand', 'Assumption University of Thailand', 'abac@au.edu', '592/3 Soi Ramkhamhaeng 24 Ramkhamhaeng Rd., Hua Mak, Bangkok 10240  Tel. (66) 0-2300-4543-62 Fax. (66) 0-2300-4563'),
+(23, 'Thailand', 'Suan Dusit University', '', '295 Nakhon Ratchasima Rd, Khwaeng Dusit, Khet Dusit, ????????????? 10300, Thailand');
 
 -- --------------------------------------------------------
 
@@ -49,15 +192,10 @@ CREATE TABLE `intern` (
   `passport_issue` date NOT NULL,
   `passport_expiry` date NOT NULL,
   `passport_scan` varchar(255) NOT NULL,
-  `visa_scan` varchar(255) NOT NULL
+  `visa_scan` varchar(255) NOT NULL,
+  `start_internship` date NOT NULL,
+  `end_internship` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `intern`
---
-
-INSERT INTO `intern` (`id`, `periode_tahun`, `photo`, `name`, `date_of_birth`, `place_of_birth`, `gender`, `nationality`, `address`, `zip_code`, `city`, `state`, `contry`, `phone`, `email`, `last_university`, `passport_number`, `passport_issue`, `passport_expiry`, `passport_scan`, `visa_scan`) VALUES
-(1, '2015', '2ylqtr7w19us0wo.jpg', 'Celine Bartelds', '1994-10-19', 'Assen', 'Female', 'Dutch', 'Everlaan 7 Assen', '9408CJ', 'Assen', 'Drenthe', 'Netherlands', '+31657760856', 'celinebartelds@hotmail.com', 'Hanze University of Applied Sciences, Groningen', 'NX84HPLH0', '2014-03-22', '2024-03-22', '61lkynhpzps84s0.jpg', '1hffd8bw5fr40ow.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,13 +211,6 @@ CREATE TABLE `intern_file` (
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `intern_file`
---
-
-INSERT INTO `intern_file` (`id`, `nama_intern`, `nama_file`, `keterangan_file`, `file`) VALUES
-(3, 'Celine Bartelds', 'Diploma / Izasah', '', '7m5dsci5hn8ckw0.pdf');
-
 -- --------------------------------------------------------
 
 --
@@ -89,7 +220,7 @@ INSERT INTO `intern_file` (`id`, `nama_intern`, `nama_file`, `keterangan_file`, 
 CREATE TABLE `mou` (
   `id` int(11) NOT NULL,
   `document_id` varchar(255) NOT NULL,
-  `partener` varchar(255) NOT NULL,
+  `partner` varchar(255) NOT NULL,
   `program` text NOT NULL,
   `continent` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
@@ -104,7 +235,7 @@ CREATE TABLE `mou` (
 -- Dumping data for table `mou`
 --
 
-INSERT INTO `mou` (`id`, `document_id`, `partener`, `program`, `continent`, `country`, `start`, `end`, `scan`, `tanggal_input`, `id_user`) VALUES
+INSERT INTO `mou` (`id`, `document_id`, `partner`, `program`, `continent`, `country`, `start`, `end`, `scan`, `tanggal_input`, `id_user`) VALUES
 (4, 'U/MY/UKM/1/2014', 'Universitas Kebangsaan Malaysia', '', 'ASIA', 'Malaysia', '2014-04-01', '0000-00-00', '', '2018-04-17 23:50:16', 'Ikhsan Thohir'),
 (6, 'U/KH/BIT/1/2016', 'Battambang Institute of Technology ( BIT )', '', 'ASIA', 'Kamboja', '0000-00-00', '0000-00-00', '', '2018-04-17 23:51:34', 'Ikhsan Thohir'),
 (7, 'U/KH/RPITSB/1/2016', 'Regional polytechnic institute techno sen battambang (RPITSB)', '', 'ASIA', 'KAMBOJA', '0000-00-00', '0000-00-00', '', '2018-04-17 23:52:02', 'Ikhsan Thohir'),
@@ -151,6 +282,36 @@ INSERT INTO `tbl_admin` (`admin_id`, `admin_username`, `admin_password`, `admin_
 --
 
 --
+-- Indexes for table `ais_berangkat`
+--
+ALTER TABLE `ais_berangkat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ais_kelompok`
+--
+ALTER TABLE `ais_kelompok`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ais_peserta`
+--
+ALTER TABLE `ais_peserta`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ais_pulang`
+--
+ALTER TABLE `ais_pulang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `conference_email`
+--
+ALTER TABLE `conference_email`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `intern`
 --
 ALTER TABLE `intern`
@@ -179,10 +340,40 @@ ALTER TABLE `tbl_admin`
 --
 
 --
+-- AUTO_INCREMENT for table `ais_berangkat`
+--
+ALTER TABLE `ais_berangkat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ais_kelompok`
+--
+ALTER TABLE `ais_kelompok`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `ais_peserta`
+--
+ALTER TABLE `ais_peserta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `ais_pulang`
+--
+ALTER TABLE `ais_pulang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `conference_email`
+--
+ALTER TABLE `conference_email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT for table `intern`
 --
 ALTER TABLE `intern`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `intern_file`
@@ -194,7 +385,7 @@ ALTER TABLE `intern_file`
 -- AUTO_INCREMENT for table `mou`
 --
 ALTER TABLE `mou`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
