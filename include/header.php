@@ -17,6 +17,7 @@ $page_name = basename($parts['path']);
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="../assets/css/w3.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
   <link rel="stylesheet" href="../assets/css/font-awesome.css">
 </head>
 <body>

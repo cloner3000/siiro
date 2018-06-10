@@ -11,6 +11,8 @@ include "../include/header.php";
    	$username = $_SESSION['nama'];
     $xcrud = Xcrud::get_instance();
 	$xcrud->table('ais_berangkat');
+	$xcrud->relation('ketua','ais_peserta','id','nama','periode_tahun = '.$_SESSION['ais_periode_tahun'],'',true);
+	$xcrud->relation('anggota','ais_peserta','id','nama','periode_tahun = '.$_SESSION['ais_periode_tahun'],'',true);
 	if (isset($_SESSION['ais_periode_tahun'])) {
 	$xcrud->where('periode_tahun =', $_SESSION['ais_periode_tahun']);
 	$xcrud->pass_default('periode_tahun', $_SESSION['ais_periode_tahun']);
