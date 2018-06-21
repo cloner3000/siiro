@@ -1,6 +1,8 @@
 <?php
 session_start();
 require '../include/database.php';
+// query setting
+$setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'));
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +10,7 @@ require '../include/database.php';
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Login SIIRO</title>
+	<title>Login <?php echo $setting['nama_website']; ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="../assets/css/w3.css">
@@ -16,7 +18,8 @@ require '../include/database.php';
 </head>
 <body class="w3-light-grey">
 	<form method="post" class="w3-card w3-padding w3-white" style="width: 400px; margin-top: 150px;margin: auto; margin-top: 50px">
-		<h2 class="w3-center">Login SIIRO</h2>
+    <p class="w3-center"><img class="w3-padding" src="../uploads/logo/<?php echo $setting['logo']; ?>" style="width: 200px"></p>
+		<h2 class="w3-center">Login <?php echo $setting['nama_website']; ?></h2>
 		<?php
             if(isset($_POST['submit'])){
               $user = mysqli_real_escape_string($conn,$_POST["user"]);
@@ -29,6 +32,7 @@ require '../include/database.php';
                 $_SESSION['foto'] = $row['admin_foto'];
                 $_SESSION['nama'] = $row['admin_nama'];
                 $_SESSION['ais_periode_tahun'] = date('Y');
+                $_SESSION['pesan'] = 'Selamat Datang '.$row['admin_nama'].' !';
                 // Redirect user to index.php
                 header("Location: index.php");
               }else{

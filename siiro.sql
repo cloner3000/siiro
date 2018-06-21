@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2018 at 07:14 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Generation Time: Jun 21, 2018 at 01:12 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,18 +58,23 @@ CREATE TABLE `ais_kelompok` (
 --
 
 INSERT INTO `ais_kelompok` (`id`, `nama`, `jenis`, `keterangan`, `periode_tahun`) VALUES
-(1, 'Sistem Infomrasi 1', '', '', 0),
-(2, 'Panitia', '', '', 0),
-(4, 'TI 1', '', '', 2018),
-(5, 'TI 2', '', '', 2018),
-(6, 'TI 3', '', '', 2018),
-(7, 'TI 4', '', '', 2018),
-(8, 'TI 5', '', '', 2018),
-(9, 'TI 6', '', '', 2018),
-(10, 'TI 7', '', '', 2018),
-(11, 'TI 8', '', '', 2018),
-(12, 'TI 9', '', '', 2018),
-(13, 'TI 10', '', '', 2018);
+(3, 'Sistem Informasi 1', '', '', 2018),
+(4, 'Sistem Informasi 3', '', '', 2018),
+(5, 'Desain Komunikasi Visual 1', '', '', 2018),
+(6, 'Panitia', '', '', 2018);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ais_pembayaran`
+--
+
+CREATE TABLE `ais_pembayaran` (
+  `id` int(11) NOT NULL,
+  `peserta_id` varchar(255) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tanggal` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -92,19 +97,25 @@ CREATE TABLE `ais_peserta` (
   `scan_ktp` varchar(255) NOT NULL,
   `nomor_paspor` varchar(255) NOT NULL,
   `scan_paspor` varchar(255) NOT NULL,
-  `periode_tahun` int(11) NOT NULL
+  `periode_tahun` int(11) NOT NULL,
+  `pembayaran` int(11) DEFAULT '0',
+  `sisa_pembayaran` varchar(255) DEFAULT '0',
+  `ikut_travel` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ais_peserta`
 --
 
-INSERT INTO `ais_peserta` (`id`, `kelompok`, `status`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jurusan`, `email`, `nomor_hp`, `alamat`, `nomor_ktp`, `scan_ktp`, `nomor_paspor`, `scan_paspor`, `periode_tahun`) VALUES
-(9, '4', 'Peserta', 'M. Anton Permana', '0000-00-00', '', 'Teknik Informatika', 'anton.permana@nusaputra.ac.id', '', '', '', '', '', '', 2018),
-(10, '4', 'Peserta', 'Agham Rahmadi Setiawan', '0000-00-00', '', 'Teknik Informatika', 'agham.rahmadi@nusaputra.ac.id', '', '', '', '', '', '', 2018),
-(12, '4,13', 'Pembimbing', 'Dedi Supardi, ST,M.Kom', '0000-00-00', '', '', 'dedi.supardi@nusaputra.ac.id', '', '', '', '', '', '', 2018),
-(13, '4', 'Peserta', 'Aryo Ardianto', '0000-00-00', '', 'Teknik Informatika', 'aryo.ardianto@nusaputra.ac.id', '', '', '', '', '', '', 2018),
-(14, '4', 'Peserta', 'Aditya Rachmawan', '0000-00-00', '', 'Teknik Informatika', 'aditya.rachmawan@nusaputra.ac.id', '', '', '', '', '', '', 2018);
+INSERT INTO `ais_peserta` (`id`, `kelompok`, `status`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jurusan`, `email`, `nomor_hp`, `alamat`, `nomor_ktp`, `scan_ktp`, `nomor_paspor`, `scan_paspor`, `periode_tahun`, `pembayaran`, `sisa_pembayaran`, `ikut_travel`) VALUES
+(9, '4', 'Peserta', 'M. Anton Permana', '0000-00-00', '', 'Teknik Informatika', 'anton.permana@nusaputra.ac.id', '', '', '', '', '', '', 2018, 3000000, '2000000', 'Tidak'),
+(10, '5', 'Peserta', 'Agham Rahmadi Setiawan', '0000-00-00', '', 'Teknik Informatika', 'agham.rahmadi@nusaputra.ac.id', '', '', '', '', '', '', 2018, 50000, '-2950000', 'Tidak'),
+(12, '4', 'Pembimbing', 'Dedi Supardi, ST,M.Kom', '0000-00-00', '', '', 'dedi.supardi@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(13, '5', 'Peserta', 'Aryo Ardianto', '0000-00-00', '', 'Teknik Informatika', 'aryo.ardianto@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '-3000000', 'Tidak'),
+(14, '5', 'Peserta', 'Aditya Rachmawan', '0000-00-00', '', 'Teknik Informatika', 'aditya.rachmawan@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '-3000000', 'Tidak'),
+(16, '3', 'Peserta', 'Muhammad Ikhsan Thohir', '0000-00-00', '', 'Sistem Informasi', '', '', '', '', '', '', '', 2018, 9600000, '200', 'Ya'),
+(17, '3', 'Peserta', 'Anton Permana', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 4000000, '0', 'Tidak'),
+(18, '3', 'Pembimbing', 'Dudih Gustian', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak');
 
 -- --------------------------------------------------------
 
@@ -122,6 +133,37 @@ CREATE TABLE `ais_pulang` (
   `keterangan` text NOT NULL,
   `periode_tahun` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ais_pulang`
+--
+
+INSERT INTO `ais_pulang` (`id`, `kelompok`, `ketua`, `anggota`, `nomor_penerbangan`, `tanggal_pulang`, `keterangan`, `periode_tahun`) VALUES
+(1, 'Kel 1', '12', '10,13,15', '', '0000-00-00', '', 2018);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ais_setting`
+--
+
+CREATE TABLE `ais_setting` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `tahun` varchar(255) NOT NULL,
+  `negara` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
+  `biaya_travel` int(11) NOT NULL,
+  `biaya_conference` int(11) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ais_setting`
+--
+
+INSERT INTO `ais_setting` (`id`, `nama`, `tahun`, `negara`, `tanggal`, `biaya_travel`, `biaya_conference`, `keterangan`) VALUES
+(1, 'ICCED 2018', '2018', 'Thailand', '2018-09-06', 5600000, 3000000, '');
 
 -- --------------------------------------------------------
 
@@ -259,6 +301,28 @@ INSERT INTO `mou` (`id`, `document_id`, `partner`, `program`, `continent`, `coun
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL,
+  `nama_website` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `theme` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `nama_website`, `logo`, `alamat`, `deskripsi`, `theme`) VALUES
+(0, 'SIIRO NSP', 'LOGO-IRO.jpg', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'red');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_admin`
 --
 
@@ -294,6 +358,12 @@ ALTER TABLE `ais_kelompok`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ais_pembayaran`
+--
+ALTER TABLE `ais_pembayaran`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ais_peserta`
 --
 ALTER TABLE `ais_peserta`
@@ -303,6 +373,12 @@ ALTER TABLE `ais_peserta`
 -- Indexes for table `ais_pulang`
 --
 ALTER TABLE `ais_pulang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ais_setting`
+--
+ALTER TABLE `ais_setting`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -330,6 +406,12 @@ ALTER TABLE `mou`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
@@ -349,19 +431,31 @@ ALTER TABLE `ais_berangkat`
 -- AUTO_INCREMENT for table `ais_kelompok`
 --
 ALTER TABLE `ais_kelompok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `ais_pembayaran`
+--
+ALTER TABLE `ais_pembayaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ais_peserta`
 --
 ALTER TABLE `ais_peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `ais_pulang`
 --
 ALTER TABLE `ais_pulang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `ais_setting`
+--
+ALTER TABLE `ais_setting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `conference_email`
@@ -373,19 +467,19 @@ ALTER TABLE `conference_email`
 -- AUTO_INCREMENT for table `intern`
 --
 ALTER TABLE `intern`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `intern_file`
 --
 ALTER TABLE `intern_file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mou`
 --
 ALTER TABLE `mou`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`

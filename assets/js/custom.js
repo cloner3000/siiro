@@ -1,8 +1,10 @@
 function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
 }
 function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
 }
 
 function myFunc(id) {
@@ -15,4 +17,25 @@ function myFunc(id) {
         x.previousElementSibling.className = 
         x.previousElementSibling.className.replace(" w3-grey", "");
     }
+}
+
+function logout(){
+    swal({
+      title: 'Logout Sekarang?',
+      text: "Kamu akan keluar dari app SIIRO!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Logout!'
+  }).then((result) => {
+      if (result.value) {
+        swal(
+          'Berhasil!',
+          'Kamu berhasil logout.',
+          'success'
+          )
+        window.location.href = 'logout.php';
+    }
+})
 }

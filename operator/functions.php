@@ -1,4 +1,17 @@
 <?php
+function sisa_pembayaran($postdata, $primary, $xcrud){
+    if($postdata->get('pembayaran') - 3000000 == 0 ){
+        $postdata->set('sisa_pembayaran','200');
+    }else{
+        $postdata->set('sisa_pembayaran', $postdata->get('pembayaran') - 3000000 );
+}
+}
+
+function pembayaran_kolom($value, $fieldname, $primary_key, $row, $xcrud)
+{
+   return '<i class="fa fa-money"></i> ' . $value;
+}
+
 function publish_action($xcrud)
 {
     if ($xcrud->get('primary'))

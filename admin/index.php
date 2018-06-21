@@ -1,5 +1,6 @@
 <?php
 $page = 'index';
+$title 	= 'Dashboard';
 include "../include/header.php";
 include "../include/database.php";
 ?>
@@ -22,7 +23,21 @@ $mou_tahun2014 = mysqli_query($conn,'SELECT * FROM mou WHERE YEAR(start) = 2014'
 $jumlah_tahun2014 = mysqli_num_rows($mou_tahun2014);
 ?>
 
-<div class="w3-center">
+<?php  
+
+// notif pesan
+if (!empty($_SESSION['pesan'])) { ?>
+	<div class="w3-green w3-large w3-padding">
+		<h1><i class="fa fa-check"></i> <?php echo $_SESSION['pesan']; ?></h1>
+	</div>
+	<br>
+	<?php 
+	$_SESSION['pesan'] = '';
+}
+
+?>
+
+<div id="morris-bar-chart"></div>
 	
 <div class="w3-padding w3-red w3-quarter">
 	<div class="w3-xxlarge">

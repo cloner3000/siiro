@@ -1,9 +1,12 @@
 <?php 
 $page = 'ais_kelompok_list';
+$title = 'AIS Kelompok list';
 include "../include/header.php";
 include "../include/database.php";
 
-$kelompok_result = mysqli_query($conn,"SELECT * FROM ais_kelompok");
+$periode_tahun = $_SESSION['ais_periode_tahun'];
+
+$kelompok_result = mysqli_query($conn,"SELECT * FROM ais_kelompok WHERE periode_tahun = '$periode_tahun'");
 ?>
 <div class="w3-padding w3-green">
 	Periode Tahun : <b><?php echo $_SESSION['ais_periode_tahun']; ?></b>
@@ -12,7 +15,8 @@ $kelompok_result = mysqli_query($conn,"SELECT * FROM ais_kelompok");
 
 <div class="w3-row" id="printarea">
 <?php foreach($kelompok_result as $kelompok){ ?>
-	<div class="w3-padding w3-border w3-col l4 m6">
+	<div class="w3-col l4 m6">
+		<div class="w3-padding w3-margin w3-border">
 		<b><?php echo $kelompok["nama"] ?></b>
 		<p>Pembimbing</p>
 		
@@ -37,6 +41,10 @@ $kelompok_result = mysqli_query($conn,"SELECT * FROM ais_kelompok");
 				<li><?php echo $peserta['nama']; ?></li>
 			<?php } ?>
 		</ol>
+
+		<button class="w3-button w3-pale-red"><i class="fa fa-info"></i> Detail</button>
+		<button class="w3-button w3-pale-green"><i class="fa fa-print"></i> Print</button>
+	</div>
 	</div>
 <?php } ?>
 
