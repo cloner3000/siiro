@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2018 at 01:12 PM
+-- Generation Time: Jun 24, 2018 at 04:10 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -61,7 +61,9 @@ INSERT INTO `ais_kelompok` (`id`, `nama`, `jenis`, `keterangan`, `periode_tahun`
 (3, 'Sistem Informasi 1', '', '', 2018),
 (4, 'Sistem Informasi 3', '', '', 2018),
 (5, 'Desain Komunikasi Visual 1', '', '', 2018),
-(6, 'Panitia', '', '', 2018);
+(6, 'Panitia', '', '', 2018),
+(7, 'Sistem Informasi 2', '', '', 2018),
+(8, 'Desain Komunikasi Visual 2', '', '', 2018);
 
 -- --------------------------------------------------------
 
@@ -109,13 +111,16 @@ CREATE TABLE `ais_peserta` (
 
 INSERT INTO `ais_peserta` (`id`, `kelompok`, `status`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jurusan`, `email`, `nomor_hp`, `alamat`, `nomor_ktp`, `scan_ktp`, `nomor_paspor`, `scan_paspor`, `periode_tahun`, `pembayaran`, `sisa_pembayaran`, `ikut_travel`) VALUES
 (9, '4', 'Peserta', 'M. Anton Permana', '0000-00-00', '', 'Teknik Informatika', 'anton.permana@nusaputra.ac.id', '', '', '', '', '', '', 2018, 3000000, '2000000', 'Tidak'),
-(10, '5', 'Peserta', 'Agham Rahmadi Setiawan', '0000-00-00', '', 'Teknik Informatika', 'agham.rahmadi@nusaputra.ac.id', '', '', '', '', '', '', 2018, 50000, '-2950000', 'Tidak'),
-(12, '4', 'Pembimbing', 'Dedi Supardi, ST,M.Kom', '0000-00-00', '', '', 'dedi.supardi@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
-(13, '5', 'Peserta', 'Aryo Ardianto', '0000-00-00', '', 'Teknik Informatika', 'aryo.ardianto@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '-3000000', 'Tidak'),
-(14, '5', 'Peserta', 'Aditya Rachmawan', '0000-00-00', '', 'Teknik Informatika', 'aditya.rachmawan@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '-3000000', 'Tidak'),
+(10, '5', 'Peserta', 'Agham Rahmadi Setiawan', '0000-00-00', '', 'Teknik Informatika', 'agham.rahmadi@nusaputra.ac.id', '', '', '', '', '', '', 2018, 200000, '-2950000', 'Tidak'),
+(12, '5,8', 'Pembimbing', 'Dedi Supardi, ST,M.Kom', '0000-00-00', '', 'Desain Komunikasi Visual', 'dedi.supardi@nusaputra.ac.id', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(13, '5', 'Peserta', 'Aryo Ardianto', '0000-00-00', '', 'Teknik Informatika', 'aryo.ardianto@nusaputra.ac.id', '', '', '', '', '', '', 2018, 500000, '-3000000', 'Ya'),
+(14, '5', 'Peserta', 'Aditya Rachmawan', '0000-00-00', '', 'Teknik Informatika', 'aditya.rachmawan@nusaputra.ac.id', '', '', '', '', '', '', 2018, 300000, '-3000000', 'Tidak'),
 (16, '3', 'Peserta', 'Muhammad Ikhsan Thohir', '0000-00-00', '', 'Sistem Informasi', '', '', '', '', '', '', '', 2018, 9600000, '200', 'Ya'),
 (17, '3', 'Peserta', 'Anton Permana', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 4000000, '0', 'Tidak'),
-(18, '3', 'Pembimbing', 'Dudih Gustian', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak');
+(18, '3,7', 'Pembimbing', 'Dudih Gustian', '0000-00-00', '', 'Desain Komunikasi Visual', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(19, '', '', 'Ikhsan 2', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(20, '', '', 'hyde', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(21, '5', '', 'hyde2', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak');
 
 -- --------------------------------------------------------
 
@@ -164,6 +169,58 @@ CREATE TABLE `ais_setting` (
 
 INSERT INTO `ais_setting` (`id`, `nama`, `tahun`, `negara`, `tanggal`, `biaya_travel`, `biaya_conference`, `keterangan`) VALUES
 (1, 'ICCED 2018', '2018', 'Thailand', '2018-09-06', 5600000, 3000000, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id` int(11) NOT NULL,
+  `id_user` varchar(255) NOT NULL,
+  `id_kategori` varchar(255) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `isi` text NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `tag` varchar(255) NOT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id`, `id_user`, `id_kategori`, `judul`, `slug`, `isi`, `gambar`, `tag`, `tanggal`) VALUES
+(1, '1', '3', 'Cara membuat blog sederhana dengan codeigniter', 'blog-code-igniter', '<p>\r\n	<span style=\"color: rgb(0, 0, 0); font-family: Raleway, sans-serif; font-size: 15px;\">Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</span></p>\r\n', 'aafa4-1917474.jpg', 'blog codeigniter', '2018-06-28 07:00:00'),
+(2, '1', '1', 'Teknik SEO bagi pemula untuk blogsopt dan wordpress', 'teknik-seo', '<p>\r\n	Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>\r\n', 'cf20d-w_2014_339.jpg', 'seo', '2018-06-05 07:00:00'),
+(3, '1', '1', 'Sistem Informasi Perpustakaan', 'sistem-inforsis-perpus', '<p>\r\n	Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>\r\n', '505de-bridge.jpg', 'perpus', '2018-06-05 17:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita_kategori`
+--
+
+CREATE TABLE `berita_kategori` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(60) NOT NULL,
+  `jenis` varchar(20) NOT NULL,
+  `keterangan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `berita_kategori`
+--
+
+INSERT INTO `berita_kategori` (`id`, `nama`, `jenis`, `keterangan`) VALUES
+(1, 'Tips Trik', '', ''),
+(2, 'Berita', '', ''),
+(3, 'News', '', ''),
+(4, 'Politik', '', ''),
+(5, 'Sport', '', ''),
+(6, 'Technology', '', '');
 
 -- --------------------------------------------------------
 
@@ -226,7 +283,7 @@ CREATE TABLE `intern` (
   `zip_code` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
-  `contry` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `last_university` varchar(255) NOT NULL,
@@ -239,6 +296,15 @@ CREATE TABLE `intern` (
   `end_internship` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `intern`
+--
+
+INSERT INTO `intern` (`id`, `periode_tahun`, `photo`, `name`, `date_of_birth`, `place_of_birth`, `gender`, `nationality`, `address`, `zip_code`, `city`, `state`, `country`, `phone`, `email`, `last_university`, `passport_number`, `passport_issue`, `passport_expiry`, `passport_scan`, `visa_scan`, `start_internship`, `end_internship`) VALUES
+(1, '2018', '', 'Celine Bartelds', '0000-00-00', '', '', '', '', '', '', '', 'Netherland', '', '', '', '', '0000-00-00', '0000-00-00', '', '', '2018-06-11', '2018-06-09'),
+(2, '2018', '', 'Sebastian Schone', '0000-00-00', '', '', '', '', '', '', '', 'Germany', '', '', '', '', '0000-00-00', '0000-00-00', '', '', '2018-06-08', '2018-06-30'),
+(3, '2018', '', 'Anna Guaita Crespo', '0000-00-00', '', '', '', '', '', '', '', 'Spain', '', '', '', '', '0000-00-00', '0000-00-00', '', '', '2018-06-03', '2018-06-19');
+
 -- --------------------------------------------------------
 
 --
@@ -249,6 +315,7 @@ CREATE TABLE `intern_file` (
   `id` int(11) NOT NULL,
   `nama_intern` varchar(255) NOT NULL,
   `nama_file` varchar(255) NOT NULL,
+  `disimpan_di` varchar(255) NOT NULL,
   `keterangan_file` text NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -318,7 +385,48 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `nama_website`, `logo`, `alamat`, `deskripsi`, `theme`) VALUES
-(0, 'SIIRO NSP', 'LOGO-IRO.jpg', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'red');
+(0, 'SIIRO', 'LOGO-IRO.jpg', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'orange');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `surat_keluar`
+--
+
+CREATE TABLE `surat_keluar` (
+  `id` int(11) NOT NULL,
+  `id_nomor` varchar(255) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `perihal` varchar(255) NOT NULL,
+  `ringkasan` varchar(255) NOT NULL,
+  `scan_file` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `surat_nomor`
+--
+
+CREATE TABLE `surat_nomor` (
+  `id` int(11) NOT NULL,
+  `nomor` varchar(255) NOT NULL,
+  `surat_ke` int(11) NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `bulan` varchar(255) NOT NULL,
+  `tahun` varchar(255) NOT NULL,
+  `id_surat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `surat_nomor`
+--
+
+INSERT INTO `surat_nomor` (`id`, `nomor`, `surat_ke`, `jenis`, `bulan`, `tahun`, `id_surat`) VALUES
+(1, 'IRO-NSP/AIP/2018/12/1', 1, 'sertifikat', '12', '2018', ''),
+(2, 'IRO/AIP/2018/06/1', 1, 'sertifikat', '06', '2018', ''),
+(3, '001/AIP/IRO-NSP/6/2018', 0, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -340,6 +448,32 @@ CREATE TABLE `tbl_admin` (
 
 INSERT INTO `tbl_admin` (`admin_id`, `admin_username`, `admin_password`, `admin_nama`, `admin_foto`) VALUES
 (13, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Ikhsan Thohir', 'qm39u4lbc408wo.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telp` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `akses_level` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `nama`, `email`, `telp`, `username`, `password`, `akses_level`, `foto`, `last_login`) VALUES
+(7, 'Ikhsan Thohir', 'ikhsan.thohir@gmail.com', '081615399070', 'ikhsan', '67a7872c5aeb341d482f955cd8ff9b951a26e74e', 'admin', 'muhammad_ikhsan_thohir_3412.jpg', '2018-06-21 01:43:35'),
+(40, 'Eizan', 'eizan@gmail.com', '', 'eizan', '67a7872c5aeb341d482f955cd8ff9b951a26e74e', 'member', 'eizan_1243.png', '2018-06-16 05:39:36');
 
 --
 -- Indexes for dumped tables
@@ -382,6 +516,18 @@ ALTER TABLE `ais_setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `berita_kategori`
+--
+ALTER TABLE `berita_kategori`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `conference_email`
 --
 ALTER TABLE `conference_email`
@@ -412,10 +558,28 @@ ALTER TABLE `setting`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `surat_keluar`
+--
+ALTER TABLE `surat_keluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `surat_nomor`
+--
+ALTER TABLE `surat_nomor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -431,7 +595,7 @@ ALTER TABLE `ais_berangkat`
 -- AUTO_INCREMENT for table `ais_kelompok`
 --
 ALTER TABLE `ais_kelompok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ais_pembayaran`
@@ -443,7 +607,7 @@ ALTER TABLE `ais_pembayaran`
 -- AUTO_INCREMENT for table `ais_peserta`
 --
 ALTER TABLE `ais_peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `ais_pulang`
@@ -458,6 +622,18 @@ ALTER TABLE `ais_setting`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `berita_kategori`
+--
+ALTER TABLE `berita_kategori`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `conference_email`
 --
 ALTER TABLE `conference_email`
@@ -467,7 +643,7 @@ ALTER TABLE `conference_email`
 -- AUTO_INCREMENT for table `intern`
 --
 ALTER TABLE `intern`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `intern_file`
@@ -482,10 +658,28 @@ ALTER TABLE `mou`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT for table `surat_keluar`
+--
+ALTER TABLE `surat_keluar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `surat_nomor`
+--
+ALTER TABLE `surat_nomor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
