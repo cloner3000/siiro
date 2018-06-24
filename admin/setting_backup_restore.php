@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+
+
 /**
  * This file contains the Restore_Database class wich performs
  * a partial or complete restoration of any given MySQL database
@@ -9,14 +12,21 @@
 /**
  * Define database parameters here
  */
+
+
 define("DB_USER", 'root');
 define("DB_PASSWORD", '');
 define("DB_NAME", 'siiro');
 define("DB_HOST", 'localhost');
-define("BACKUP_DIR", 'myphp-backup-files'); // Comment this line to use same script's directory ('.')
-define("BACKUP_FILE", 'your-backup-file.sql.gz'); // Script will autodetect if backup file is gzipped based on .gz extension
+define("BACKUP_DIR", 'myphp-restore-files'); // Comment this line to use same script's directory ('.')
 define("CHARSET", 'utf8');
-
+if($_GET['file']){
+    define("BACKUP_FILE", $_GET['file']);
+}else{
+    session_start();
+    $_SESSION['error'] = 'Ada kesalahan dalam restore';
+    echo '<meta http-equiv="refresh" content="0; URL=\'setting_backup.php\'"/>';
+}
 /**
  * The Restore_Database class
  */
@@ -257,6 +267,9 @@ set_time_limit(900); // 15 minutes
 
 if (php_sapi_name() != "cli") {
     echo '<div style="font-family: monospace;">';
+    session_start();
+    $_SESSION['pesan'] = 'Berhasil restore';
+    echo '<meta http-equiv="refresh" content="3; URL=\'setting_backup.php\'"/>';
 }
 
 $restoreDatabase = new Restore_Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -265,4 +278,5 @@ $restoreDatabase->obfPrint("Restoration result: ".$result, 1);
 
 if (php_sapi_name() != "cli") {
     echo '</div>';
+    unlink('myphp-restore-files/'.$_GET['file']);
 }
