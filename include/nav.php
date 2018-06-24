@@ -7,22 +7,24 @@
 	<a href="index.php" class="w3-bar-item w3-button <?php if($page_name == 'index.php'){echo 'w3-theme';} ?>"><i class="fa fa-star w3-margin-right"></i>DASHBOARD</a>
 
 	<!-- Menu Intern -->
-	<a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' ){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>INTERNS<i class="w3-margin-left fa fa-caret-down"></i></a>
+	<a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>INTERNS<i class="w3-margin-left fa fa-caret-down"></i></a>
 
-	<div id="Demo2" class="w3-hide <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' ){echo 'w3-show';} ?>">
+	<div id="Demo2" class="w3-hide <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php'){echo 'w3-show';} ?>">
 		<a href="intern.php" class="w3-bar-item w3-button <?php if($page_name == 'intern.php'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right w3-margin-left"></i>Intern</a>
 		<a href="intern_file.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_file.php'){echo 'w3-theme';} ?>"><i class="fa fa-file w3-margin-right w3-margin-left"></i>Intern File</a>
+		<a href="intern_sertifikat.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_sertifikat.php'){echo 'w3-theme';} ?>"><i class="fa fa-image w3-margin-right w3-margin-left"></i>Sertifikat</a>
 	</div>
 
 	<!-- Menu MOU -->
 	<a href="mou.php" class="w3-bar-item w3-button <?php if($page_name == 'mou.php'){echo 'w3-theme';} ?>"><i class="fa fa-book w3-margin-right"></i>MOU & MOA</a>
 
 	<!-- Menu Ais -->
-	<a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' | $page_name == 'ais_kelompok_list.php' | $page_name == 'ais_pembayaran.php' | $page_name == 'ais_setting.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>AIS<i class="w3-margin-left fa fa-caret-down"></i></a>
+	<a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' | $page_name == 'ais_kelompok_list.php' | $page_name == 'ais_pembayaran.php' | $page_name == 'ais_setting.php' | $page_name == 'ais_pembimbing.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>AIS<i class="w3-margin-left fa fa-caret-down"></i></a>
 
-	<div id="Demo1" class="w3-hide <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' | $page_name == 'ais_setting.php' | $page_name == 'ais_kelompok_list.php' | $page_name == 'ais_pembayaran.php'){echo 'w3-show';} ?>">
+	<div id="Demo1" class="w3-hide <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' | $page_name == 'ais_setting.php' | $page_name == 'ais_kelompok_list.php' | $page_name == 'ais_pembayaran.php' | $page_name == 'ais_pembimbing.php'){echo 'w3-show';} ?>">
 		<a href="ais_setting.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_setting.php'){echo 'w3-theme';} ?>"><i class="fa fa-gear w3-margin-right w3-margin-left"></i>Setting</a>
 		<a href="ais_peserta.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_peserta.php'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right w3-margin-left"></i>Peserta</a>
+		<a href="ais_pembimbing.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_pembimbing.php'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right w3-margin-left"></i>Pembimbing</a>
 		<a href="ais_pembayaran.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_pembayaran.php'){echo 'w3-theme';} ?>"><i class="fa fa-money w3-margin-right w3-margin-left"></i>Pembayaran</a>
 		<a href="ais_kelompok.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_kelompok.php'){echo 'w3-theme';} ?>"><i class="fa fa-users w3-margin-right w3-margin-left"></i>Kelompok</a>
 		<a href="ais_kelompok_list.php" class="w3-bar-item w3-button <?php if($page_name == 'ais_kelompok_list.php'){echo 'w3-theme';} ?>"><i class="fa fa-users w3-margin-right w3-margin-left"></i>Kel. List</a>
