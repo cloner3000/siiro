@@ -37,6 +37,13 @@ $xcrud->change_type('ikut_travel','select','','Tidak,Ya');
 // harus diisi
 $xcrud->validation_required('nama,kelompok');
 
+// upload
+$xcrud->change_type('scan_ktp','image');
+$xcrud->change_type('scan_paspor','image');
+
+// modal
+$xcrud->modal('scan_paspor');
+
 echo $xcrud->render();
 ?>
 

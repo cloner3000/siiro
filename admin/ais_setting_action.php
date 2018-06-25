@@ -23,7 +23,7 @@ if(isset($_POST['submit_update'])){
 
 	// kirim notif
 	session_start();
-	$_SESSION['pesan'] = 'Suksek mengatur Setting untuk AIS periode tahun <strong>'.$tahun.'</strong>';
+	$_SESSION['pesan'] = 'Sukses mengatur Setting untuk AIS periode tahun <strong>'.$tahun.'</strong>';
 
 	// redirect 
 	header("Location: ais_setting.php");
