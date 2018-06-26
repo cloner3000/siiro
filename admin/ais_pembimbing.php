@@ -15,6 +15,7 @@ $xcrud->order_by('id','desc');
 $xcrud->where('status =', 'Pembimbing');
 $xcrud->where('periode_tahun =', $ais_periode_tahun);
 $xcrud->table_name('AIS Pembimbing');
+$xcrud->limit(20);
 
 // Hide Fields
 $xcrud->fields('status,jurusan,pembayaran,sisa_pembayaran,ikut_travel', true);
