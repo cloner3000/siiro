@@ -17,8 +17,10 @@ if (isset($_SESSION['ais_periode_tahun'])) {
 	$xcrud->where('periode_tahun =', $_SESSION['ais_periode_tahun']);
 	$xcrud->pass_default('periode_tahun', $_SESSION['ais_periode_tahun']);
 }
-$xcrud->columns('periode_tahun',true);
+$xcrud->columns('periode_tahun,jenis',true);
 $xcrud->validation_required('nama');
+$xcrud->unset_remove();
+
 echo $xcrud->render();
 ?>
 <?php 

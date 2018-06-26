@@ -1,6 +1,6 @@
 <?php 
 
-$data = "001/AIP/IRO-NSP/6/2018";
+$nomor = "001/U.NSP-IRO/AIP/6/2018";
 $data2 = explode('/', $data);
 $data3 = $data2[0]+1;
 print_r($data2);

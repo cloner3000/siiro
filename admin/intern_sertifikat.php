@@ -35,6 +35,7 @@ if(isset($_POST['submit'])){
 					Hasil Pencarian
 				</div>
 				<div class="">
+					<div style="overflow-x:auto;">
 					<table class="w3-table w3-border">
 						<tr class="w3-pale-green">
 							<th>No</th>
@@ -116,6 +117,7 @@ if(isset($_POST['submit'])){
 							</tr>
 						<?php } ?>
 					</table>
+				</div>
 				</div>
 			</div>
 		</div>

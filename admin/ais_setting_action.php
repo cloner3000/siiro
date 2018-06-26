@@ -19,11 +19,16 @@ if(isset($_POST['submit_update'])){
 	$biaya_travel		= $_POST['biaya_travel'];
 	$keterangan			= $_POST['keterangan'];
 
-	mysqli_query($conn,"UPDATE ais_setting SET nama='$nama',negara='$negara',tanggal='$tanggal',biaya_conference='$biaya_conference',biaya_travel='$biaya_travel',keterangan='$keterangan' WHERE tahun='$tahun' ");
+	// update
+	if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM ais_setting WHERE tahun='$tahun'")) > 0 ){
+		mysqli_query($conn,"UPDATE ais_setting SET nama='$nama',negara='$negara',tanggal='$tanggal',biaya_conference='$biaya_conference',biaya_travel='$biaya_travel',keterangan='$keterangan' WHERE tahun='$tahun' ");
+	}else{
+		mysqli_query($conn,"INSERT INTO ais_setting (nama,negara,tanggal,biaya_conference,biaya_travel,keterangan,tahun) VALUES ('$nama','$negara','$tanggal','$biaya_conference','$biaya_travel','$keterangan','$tahun') ");
+	}
 
 	// kirim notif
 	session_start();
-	$_SESSION['pesan'] = 'Suksek mengatur Setting untuk AIS periode tahun <strong>'.$tahun.'</strong>';
+	$_SESSION['pesan'] = 'Sukses mengatur Setting untuk AIS periode tahun <strong>'.$tahun.'</strong>';
 
 	// redirect 
 	header("Location: ais_setting.php");

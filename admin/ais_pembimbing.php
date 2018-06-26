@@ -15,6 +15,7 @@ $xcrud->order_by('id','desc');
 $xcrud->where('status =', 'Pembimbing');
 $xcrud->where('periode_tahun =', $ais_periode_tahun);
 $xcrud->table_name('AIS Pembimbing');
+$xcrud->limit(20);
 
 // Hide Fields
 $xcrud->fields('status,jurusan,pembayaran,sisa_pembayaran,ikut_travel', true);
@@ -40,6 +41,13 @@ $xcrud->change_type('ikut_travel','select','','Tidak,Ya');
 
 // harus diisi
 $xcrud->validation_required('nama,kelompok');
+
+// upload
+$xcrud->change_type('scan_ktp','image');
+$xcrud->change_type('scan_paspor','image');
+
+// modal
+$xcrud->modal('scan_paspor');
 
 echo $xcrud->render();
 ?>

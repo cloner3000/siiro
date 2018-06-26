@@ -7,7 +7,7 @@ include "../include/header.php";
     $xcrud = Xcrud::get_instance();
 	$xcrud->table('intern');
 	$xcrud->table_name('Data Intern');
-	$xcrud->columns('periode_tahun,photo,name,contry,start_internship,end_internship');
+	$xcrud->columns('periode_tahun,photo,name,country,start_internship,end_internship');
 	$xcrud->change_type('photo', 'image');
 	$xcrud->validation_required('name,periode_tahun');
 	$xcrud->change_type('periode_tahun', 'int');

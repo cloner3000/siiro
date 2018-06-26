@@ -38,76 +38,103 @@ if (!empty($_SESSION['pesan'])) { ?>
 ?>
 
 
-<div class="w3-padding w3-red w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-book"></i>
-		<?php echo $jumlah_mou; ?>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-red ">
+		<div class="w3-xxlarge">
+			<i class="fa fa-book"></i>
+			<?php echo $jumlah_mou; ?>
+		</div>
+		MOU dan MOA
 	</div>
-	MOU dan MOA
 </div>
 
-<div class="w3-padding w3-blue w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-users"></i>
-		<?php echo $jumlah_intern; ?>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-blue ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-users"></i>
+			<?php echo $jumlah_intern; ?>
+		</div>
+		Intern
 	</div>
-	Intern
 </div>
-<div class="w3-padding w3-green w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-file"></i>
-		<?php echo $jumlah_file; ?>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-green ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-file"></i>
+			<?php echo $jumlah_file; ?>
+		</div>
+		File Intern
 	</div>
-	File Intern
-</div>
-<div class="w3-padding w3-deep-orange w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-star"></i>
-		<?php echo $jumlah_mou; ?>
-	</div>
-	MOU dan MOA
-</div>
-<div class="w3-padding w3-green w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-book"></i>
-		<?php echo $jumlah_mou; ?>
-	</div>
-	MOU dan MOA
 </div>
 
-<div class="w3-padding w3-deep-orange w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-users"></i>
-		<?php echo $jumlah_intern; ?>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-brown ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-star"></i>
+			<?php echo $jumlah_mou; ?>
+		</div>
+		MOU dan MOA
 	</div>
-	Intern
 </div>
-<div class="w3-padding w3-red w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-file"></i>
-		<?php echo $jumlah_file; ?>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-pale-green ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-money"></i>
+			<?php 
+			$pemasukan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(pembayaran) as pemasukan FROM ais_peserta"));
+			echo '<span class="w3-xlarge">Rp. </span><span class="w3-xlarge uang">'.$pemasukan['pemasukan'].'</span>'; 
+			?>
+		</div>
+		Pemasukan
 	</div>
-	File Intern
 </div>
-<div class="w3-padding w3-blue w3-quarter">
-	<div class="w3-xxlarge">
-		<i class="fa fa-star"></i>
-		<?php echo $jumlah_mou; ?>
+
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-pale-yellow ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-users"></i>
+			<?php echo $jumlah_intern; ?>
+		</div>
+		Intern
 	</div>
-	MOU dan MOA
+</div>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-pale-red ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-file"></i>
+			<?php echo $jumlah_file; ?>
+		</div>
+		File Intern
+	</div>
+</div>
+<div class="w3-quarter">
+	<div class="w3-card-4 w3-margin w3-padding w3-pale-blue ">
+
+		<div class="w3-xxlarge">
+			<i class="fa fa-star"></i>
+			<?php echo $jumlah_mou; ?>
+		</div>
+		MOU dan MOA
+	</div>
 </div>
 
 <div class="w3-row">
 	<div class="w3-col l6">
 		<div class="w3-padding w3-margin w3-card-4">
-		<canvas id="myChart"></canvas>
-	</div>
+			<canvas id="myChart"></canvas>
+		</div>
 	</div>
 
 	<div class="w3-col l6">
 		<div class="w3-padding w3-margin w3-card-4">
-		<canvas id="myChart2"></canvas>
-	</div>
+			<canvas id="myChart2"></canvas>
+		</div>
 	</div>
 </div>
 
@@ -116,8 +143,8 @@ if (!empty($_SESSION['pesan'])) { ?>
 
 <script>
 
-var ctx = document.getElementById('myChart2');
-var chart = new Chart(ctx, {
+	var ctx = document.getElementById('myChart2');
+	var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
@@ -137,8 +164,8 @@ var chart = new Chart(ctx, {
 });
 
 
-var ctx = document.getElementById('myChart');
-var chart = new Chart(ctx, {
+	var ctx = document.getElementById('myChart');
+	var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
 
@@ -158,6 +185,14 @@ var chart = new Chart(ctx, {
 });
 
 </script>
+
+<script type="text/javascript" src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript" src="../assets/js/number-divider.min.js"></script>
+
+<script>
+	$('.uang').divide();
+</script>
+
 <?php
 include "../include/footer.php";
 ?>
