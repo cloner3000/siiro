@@ -1,6 +1,7 @@
 <?php 
 include '../include/header.php';
 ?>
+<div class="w3-container">
 <?php 
 // notif pesan sukses
 if (!empty($_SESSION['pesan'])) { ?>
@@ -23,7 +24,7 @@ if (!empty($_SESSION['error'])) { ?>
 }
 
 ?>
-
+</div>
 <div class="w3-row">
 
 	<div class="w3-half">

@@ -3,7 +3,7 @@ $page = 'setting';
 $title = 'Setting';
 include "../include/header.php";
 ?>
-
+<div class="w3-container">
 <?php 
 // notif pesan
 if (!empty($_SESSION['pesan'])) { ?>
@@ -155,7 +155,7 @@ if(isset($_POST["submit"])) {
 	</div>
 </div>
 
-
+</div>
 <?php 
 include "../include/footer.php";
 ?>

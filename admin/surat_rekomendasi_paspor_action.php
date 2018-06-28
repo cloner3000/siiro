@@ -80,7 +80,7 @@ Jabatan&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Kepala Kantor Urusan Internas
 Nama&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:  '.$nama.'<br />
 Alamat&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:  '.$alamat.'<br />
 Nomor KTP&nbsp; &nbsp; &nbsp;:  '.$nomor_ktp.'<br />
-Jurusan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :  '.$jurusan.'</p>
+Jurusan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :  '.$jurusan.'</p>
 <p>Yang&nbsp;bersangkutan memang benar Mahasiswa di kampus kami yang akan mengikuti Program Internasional Seminar ICCED 2018 pada bulan September dengan tujuan negara Thailand.</p>
 <p>Demikianlah surat rekomendasi ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
 <p>&nbsp;</p>

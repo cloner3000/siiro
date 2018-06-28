@@ -2,6 +2,9 @@
 $page = 'ais_pulang';
 include "../include/header.php";
 ?>
+
+<div class="w3-container">
+
 <div class="w3-padding w3-green">
 	Periode Tahun : <b><?php echo $_SESSION['ais_periode_tahun']; ?></b>
 </div>
@@ -43,6 +46,8 @@ jQuery(document).on("xcrudafterdepend", function(event, container, data) {
     jQuery(container).find('select[name="' + data.name + '"]').select2();
 });
 </script>
+
+</div>
 
 <?php 
 include "../include/footer.php";

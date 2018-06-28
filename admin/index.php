@@ -5,6 +5,9 @@ include "../include/header.php";
 include "../include/database.php";
 ?>
 <?php 
+// get ais periode tahun
+$ais_periode_tahun = $_SESSION['ais_periode_tahun'];
+
 // mou
 $mou = mysqli_query($conn,'SELECT * FROM mou');
 $array_mou = mysqli_fetch_assoc($mou);
@@ -23,104 +26,138 @@ $mou_tahun2014 = mysqli_query($conn,'SELECT * FROM mou WHERE YEAR(start) = 2014'
 $jumlah_tahun2014 = mysqli_num_rows($mou_tahun2014);
 ?>
 
-<?php  
+<div class="w3-container">
+
+	<?php  
 
 // notif pesan
-if (!empty($_SESSION['pesan'])) { ?>
-	<div class="w3-green w3-large w3-padding">
-		<h1><i class="fa fa-check"></i> <?php echo $_SESSION['pesan']; ?></h1>
-	</div>
-	<br>
-	<?php 
-	$_SESSION['pesan'] = '';
-}
-
-?>
-
-
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-red ">
-		<div class="w3-xxlarge">
-			<i class="fa fa-book"></i>
-			<?php echo $jumlah_mou; ?>
+	if (!empty($_SESSION['pesan'])) { ?>
+		<div class="w3-green w3-large w3-padding">
+			<h1><i class="fa fa-check"></i> <?php echo $_SESSION['pesan']; ?></h1>
 		</div>
-		MOU dan MOA
-	</div>
+		<br>
+		<?php 
+		$_SESSION['pesan'] = '';
+	}
+	?>
+
 </div>
 
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-blue ">
-
-		<div class="w3-xxlarge">
-			<i class="fa fa-users"></i>
-			<?php echo $jumlah_intern; ?>
+<div class="w3-row">
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-red ">
+			<div class="w3-xxlarge">
+				<i class="fa fa-book"></i>
+				<?php echo $jumlah_mou; ?>
+			</div>
+			MOU dan MOA
 		</div>
-		Intern
+	</div>
+
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-blue ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-users"></i>
+				<?php echo $jumlah_intern; ?>
+			</div>
+			Intern
+		</div>
+	</div>
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-green ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-file"></i>
+				<?php echo $jumlah_file; ?>
+			</div>
+			File Intern
+		</div>
+	</div>
+
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-brown ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-star"></i>
+				<?php echo $jumlah_mou; ?>
+			</div>
+			MOU dan MOA
+		</div>
 	</div>
 </div>
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-green ">
+<hr>
 
-		<div class="w3-xxlarge">
-			<i class="fa fa-file"></i>
-			<?php echo $jumlah_file; ?>
+<span class="w3-padding w3-text-dark-grey w3-large">AIS Summary <i class="fa fa-bar-chart"></i></span>
+<div class="w3-row">
+
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-yellow ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-calendar"></i>
+				<?php
+				echo $ais_periode_tahun;
+				?>
+			</div>
+			Tahun Periode
 		</div>
-		File Intern
 	</div>
-</div>
 
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-brown ">
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-green ">
 
-		<div class="w3-xxlarge">
-			<i class="fa fa-star"></i>
-			<?php echo $jumlah_mou; ?>
-		</div>
-		MOU dan MOA
-	</div>
-</div>
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-pale-green ">
-
-		<div class="w3-xxlarge">
-			<i class="fa fa-money"></i>
+			<div class="w3-xxlarge">
+				<i class="fa fa-money"></i>
+				<span class="w3-large">Pemasukan</span>
+			</div>
 			<?php 
-			$pemasukan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(pembayaran) as pemasukan FROM ais_peserta"));
-			echo '<span class="w3-xlarge">Rp. </span><span class="w3-xlarge uang">'.$pemasukan['pemasukan'].'</span>'; 
+			$ais_pemasukan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(pembayaran) as pemasukan FROM ais_peserta WHERE periode_tahun = '$ais_periode_tahun'"));
+			echo '<span class="w3-large">Rp. </span><span class="w3-large uang">'.$ais_pemasukan['pemasukan'].'</span>'; 
 			?>
 		</div>
-		Pemasukan
+	</div>
+
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-yellow ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-user"></i>
+				<?php
+				$ais_peserta = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM ais_peserta WHERE status = 'Peserta' AND periode_tahun = '$ais_periode_tahun'"));
+				echo $ais_peserta;
+				?>
+			</div>
+			Peserta
+		</div>
+	</div>
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-red ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-graduation-cap"></i>
+				<?php
+				$ais_pembimbing = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM ais_peserta WHERE status = 'Pembimbing' AND periode_tahun = '$ais_periode_tahun'"));
+				echo $ais_pembimbing;
+				?>
+			</div>
+			Pembimbing
+		</div>
 	</div>
 </div>
+<div class="w3-row">
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-blue ">
 
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-pale-yellow ">
-
-		<div class="w3-xxlarge">
-			<i class="fa fa-users"></i>
-			<?php echo $jumlah_intern; ?>
+			<div class="w3-xxlarge">
+				<i class="fa fa-users"></i>
+				<?php
+				$ais_kelompok = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM ais_kelompok WHERE periode_tahun = '$ais_periode_tahun'"));
+				echo $ais_kelompok;
+				?>
+			</div>
+			Kelompok
 		</div>
-		Intern
-	</div>
-</div>
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-pale-red ">
-
-		<div class="w3-xxlarge">
-			<i class="fa fa-file"></i>
-			<?php echo $jumlah_file; ?>
-		</div>
-		File Intern
-	</div>
-</div>
-<div class="w3-quarter">
-	<div class="w3-card-4 w3-margin w3-padding w3-pale-blue ">
-
-		<div class="w3-xxlarge">
-			<i class="fa fa-star"></i>
-			<?php echo $jumlah_mou; ?>
-		</div>
-		MOU dan MOA
 	</div>
 </div>
 
