@@ -3,6 +3,7 @@ $page = 'surat_rekomendasi_paspor';
 $title = 'Surat Rekomendasi Paspor';
 include "../include/header.php";
 ?>
+<div class="w3-container">
 
 <div class="w3-row">
 	<form class="w3-card-4 w3-half" method="post">
@@ -126,6 +127,7 @@ if(isset($_POST['submit'])){
 }
 ?>
 
+</div>
 <?php 
 include "../include/footer.php";
 ?>

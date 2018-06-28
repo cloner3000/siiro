@@ -4,6 +4,8 @@ $page = 'ais_kelompok';
 include "../include/header.php";
 ?>
 
+<div class="w3-container">
+
 <div class="w3-padding w3-green">
 	Periode Tahun : <b><?php echo $_SESSION['ais_periode_tahun']; ?></b>
 </div>
@@ -23,6 +25,9 @@ $xcrud->unset_remove();
 
 echo $xcrud->render();
 ?>
+
+</div>
+
 <?php 
 include "../include/footer.php";
 ?>

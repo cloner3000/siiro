@@ -2,7 +2,8 @@
 $page = 'mou';
 include "../include/header.php";
 ?>
-<div class="col-lg-12">
+
+<div class="w3-container">
    <?php
    	$username = $_SESSION['nama'];
     $xcrud = Xcrud::get_instance();

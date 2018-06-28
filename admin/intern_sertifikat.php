@@ -4,6 +4,8 @@ $title = 'Sertifikat Intern';
 include "../include/header.php";
 ?>
 
+<div class="w3-container">
+
 <div class="w3-row">
 	<form class="w3-card-4 w3-half" method="post">
 		<div class="w3-padding w3-theme w3-large">
@@ -127,6 +129,8 @@ if(isset($_POST['submit'])){
 	}else{echo '<hr><div class="w3-padding w3-red"><h3><i class="fa fa-warning"></i> Intern tidak di temukan !</h3></div>';}
 }
 ?>
+
+</div>
 
 <?php 
 include "../include/footer.php";

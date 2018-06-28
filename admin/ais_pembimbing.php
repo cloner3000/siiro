@@ -4,6 +4,8 @@ $title = 'AIS Pembimbing';
 include "../include/header.php";
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 ?>
+<div class="w3-container">
+
 <div class="w3-padding w3-green">
 	Periode Tahun : <b><?php echo $_SESSION['ais_periode_tahun']; ?></b>
 </div>
@@ -51,6 +53,8 @@ $xcrud->modal('scan_paspor');
 
 echo $xcrud->render();
 ?>
+
+</div>
 
 <link href="../assets/css/select2.min.css" rel="stylesheet" />
 <script src="../assets/js/select2.min.js"></script>

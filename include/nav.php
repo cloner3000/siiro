@@ -1,4 +1,4 @@
-<nav class="w3-sidebar w3-bar-block w3-card w3-collapse w3-animate-left" style="z-index:3;width: 200px" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-card w3-collapse w3-animate-left" style="z-index:3;width: 220px" id="mySidebar">
 	<div class="w3-padding w3-center">
 		<img src="../uploads/logo/<?php echo $setting['logo']; ?>" width="80%">
 	</div>
@@ -39,6 +39,13 @@
 		<a href="conference_email.php" class="w3-bar-item w3-button <?php if($page_name == 'conference_email.php'){echo 'w3-theme';} ?>"><i class="fa fa-envelope w3-margin-right w3-margin-left"></i>Email Univ</a>
 	</div>
 
+	<!-- Menu Surat -->
+	<a id="myBtn" onclick="myFunc('Demo5')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'surat.php' | $page_name == 'surat_rekomendasi_paspor.php'){echo 'w3-grey';} ?>"><i class="fa fa-envelope w3-margin-right"></i>SURAT<i class="w3-margin-left fa fa-caret-down"></i></a>
+
+	<div id="Demo5" class="w3-hide <?php if($page_name == 'surat.php' | $page_name == 'surat_rekomendasi_paspor.php'){echo 'w3-show';} ?>">
+		<a href="surat_rekomendasi_paspor.php" class="w3-bar-item w3-button <?php if($page_name == 'surat_rekomendasi_paspor.php'){echo 'w3-theme';} ?>"><i class="fa fa-envelope-o w3-margin-right w3-margin-left"></i>Rek. Paspor</a>
+	</div>
+
     <!-- Menu Setting -->
 	<a id="myBtn" onclick="myFunc('Demo4')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'setting.php' | $page_name == 'setting_backup.php'){echo 'w3-grey';} ?>"><i class="fa fa-gear w3-margin-right"></i>SETTING<i class="w3-margin-left fa fa-caret-down"></i></a>
 
@@ -55,7 +62,7 @@
 <!-- Overlay effect when opening the side navigation on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
-<div class="w3-main" style="margin-left: 200px;">
+<div class="w3-main" style="margin-left: 220px;">
 
 	<div class="w3-padding w3-theme w3-card w3-large" >
 

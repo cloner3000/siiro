@@ -1,15 +1,23 @@
 <?php 
-$page = 'ais_pembayaran';
-$title = 'AIS Pembayaran';
+$page = 'ais_peserta_detail';
+$title = 'AIS Peserta Detail';
 
 include "../include/header.php";
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
+
+// get id
+$peserta_id = $_GET['kelompok'];
+
+// kelompok
+$peserta = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ais_peserta WHERE id = '$peserta_id'"));
+
 ?>
+
 <div class="w3-container">
+
 <div class="w3-padding w3-green">
 	Periode Tahun : <b><?php echo $_SESSION['ais_periode_tahun']; ?></b>
 </div>
-
 <?php 
 // query setting ais
 $ais_setting    = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ais_setting WHERE tahun = '$ais_periode_tahun'"));
@@ -23,60 +31,73 @@ $ais_setting    = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ais_setti
     </div>
 </div>
 
+	
+
+<div class="w3-row">
+	<div class="w3-col l1 s2">
+		<a class="w3-button w3-red w3-block" href="ais_kelompok_list.php"><i class="fa fa-arrow-left"></i></a>
+	</div>
+	<div class="w3-rest">
+		<div class="w3-green w3-padding">
+			Nama : <b><?php echo $peserta['nama']; ?></b>
+		</div>
+	</div>
+</div>
+
 
 <?php
+
+// database
 $xcrud->table('ais_peserta');
-$xcrud->where('status =', 'Peserta');
 $xcrud->where('periode_tahun =', $ais_periode_tahun);
+$xcrud->where('id =', $peserta_id);
+$xcrud->order_by('status');
 $xcrud->limit(20);
 
-// mengilangkan judul tabel
-$xcrud->unset_title();
+// kolom
+$xcrud->columns('kelompok',true);
 
-// hilangkan fungsi
-$xcrud->unset_add();
-$xcrud->unset_remove();
-
-// relasi kelompok
-$xcrud->join('kelompok','ais_kelompok','id');
-
-// kolom yang di tampilkan
-$xcrud->columns('ais_kelompok.nama,nama,ikut_travel,pembayaran,Sisa Pembayaran');
-
-// field yang di tampilkan
-$xcrud->fields('ais_kelompok.nama,nama,ikut_travel,pembayaran,Sisa Pembayaran');
+// fields
+$xcrud->fields('kelompok',true);
 
 // readonly
-$xcrud->readonly('ais_kelompok.nama,nama');
+$xcrud->readonly('status');
 
-// menganti label
-$xcrud->label('pembayaran','Yang sudah di bayar');
+// hide title
+$xcrud->unset_title();
+$xcrud->unset_remove();
+$xcrud->unset_add();
+$xcrud->unset_pagination();
+$xcrud->unset_limitlist();
+
+// jurusan
+$xcrud->change_type('jurusan','select','',',Desain Komunikasi Visual,Sistem Inforamsi,Teknik Informatika,Teknik Sipil,Teknik Elektro,Teknik Mesin');
 
 // trvel
 $xcrud->change_type('ikut_travel','select','','Tidak,Ya');
 
+// upload
+$xcrud->change_type('scan_ktp','image');
+$xcrud->change_type('scan_paspor','image');
+
 // menghitung sisa pembayaran
-$xcrud->subselect('Sisa Pembayaran','SELECT IF({ikut_travel} = "Ya" , biaya_conference + biaya_travel - {pembayaran}, biaya_conference - {pembayaran}) FROM ais_setting WHERE tahun = '.$ais_periode_tahun.'');
+$xcrud->subselect('Sisa Pembayaran','SELECT IF({ikut_travel} = "Ya" , biaya_conference + biaya_travel - {pembayaran}, biaya_conference - {pembayaran}) FROM ais_setting');
 
 // menmbah label RP.
 $xcrud->change_type('pembayaran', 'price', '0', array('prefix'=>'Rp. '));
 $xcrud->change_type('Sisa Pembayaran', 'price', '0', array('prefix'=>'Rp. '));
 
-// mewarnai berdasarkan pembayaran
-$xcrud->highlight('pembayaran', '=', 0, '#ffc9c4');
-$xcrud->highlight_row('Sisa Pembayaran', '<=', 0, '#c1ffc6');
-$xcrud->highlight_row('Sisa Pembayaran', '>', 0, '#ffcca3');
-
-// melihat total jumlah pendapatan
-$xcrud->sum('pembayaran');
 echo $xcrud->render();
+
 ?>
+
+</div>
 
 <script type="text/javascript" src="../assets/js/number-divider.min.js"></script>
 <script>
 	$('.uang').divide();
 </script>
-</div>
+	
 <?php 
 include "../include/footer.php";
 ?>
