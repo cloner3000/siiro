@@ -16,6 +16,7 @@ $xcrud->table('ais_peserta');
 $xcrud->where('status =', 'Peserta');
 $xcrud->where('periode_tahun =', $ais_periode_tahun);
 $xcrud->order_by('kelompok');
+$xcrud->limit(50);
 
 
 // pass default and hide
