@@ -6,6 +6,15 @@
 	<!-- Menu dashboard -->
 	<a href="index.php" class="w3-bar-item w3-button <?php if($page_name == 'index.php'){echo 'w3-theme';} ?>"><i class="fa fa-star w3-margin-right"></i>DASHBOARD</a>
 
+	<!-- Menu NSPGO -->
+	<a id="myBtn" onclick="myFunc('Demo7')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'nspgo_peserta.php' | $page_name == 'nspgo_poin.php' | $page_name == 'nspgo_negara.php'){echo 'w3-grey';} ?>"><i class="fa fa-globe w3-margin-right"></i>NSPGO<i class="w3-margin-left fa fa-caret-down"></i></a>
+
+	<div id="Demo7" class="w3-hide <?php if($page_name == 'nspgo_peserta.php' | $page_name == 'nspgo_poin.php' | $page_name == 'nspgo_negara.php'){echo 'w3-show';} ?>">
+		<a href="nspgo_peserta.php" class="w3-bar-item w3-button <?php if($page_name == 'nspgo_peserta.php'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right w3-margin-left"></i>Peserta</a>
+		<a href="nspgo_poin.php" class="w3-bar-item w3-button <?php if($page_name == 'nspgo_poin.php'){echo 'w3-theme';} ?>"><i class="fa fa-users w3-margin-right w3-margin-left"></i>Poin</a>
+		<a href="nspgo_negara.php" class="w3-bar-item w3-button <?php if($page_name == 'nspgo_negara.php'){echo 'w3-theme';} ?>"><i class="fa fa-flag w3-margin-right w3-margin-left"></i>Negara</a>
+	</div>
+
 	<!-- Menu Intern -->
 	<a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>INTERNS<i class="w3-margin-left fa fa-caret-down"></i></a>
 

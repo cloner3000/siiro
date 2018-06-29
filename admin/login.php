@@ -17,7 +17,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
 	<link rel="stylesheet" href="../assets/css/font-awesome.css">
 </head>
 <body class="w3-light-grey">
-	<form method="post" class="w3-card w3-padding w3-white w3-round" style="width: 300px; margin-top: 150px;margin: auto; margin-top: 50px">
+	<form method="post" class="w3-card w3-padding w3-white w3-round" style="width: 350px; margin-top: 150px;margin: auto; margin-top: 50px">
     <p class="w3-center"><img class="w3-padding" src="../uploads/logo/<?php echo $setting['logo']; ?>" style="width: 200px"></p>
 		<h3 class="w3-center"><?php echo $setting['nama_website']; ?></h3>
 		<?php
