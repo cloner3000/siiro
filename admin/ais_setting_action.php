@@ -1,4 +1,5 @@
 <?php
+include '../include/auth.php';
 include '../include/database.php';
 
 if(isset($_POST['submit'])){

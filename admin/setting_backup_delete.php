@@ -1,4 +1,5 @@
-<?php 
+<?php
+include '../include/auth.php';
 session_start();
 
 if($_GET['file']){

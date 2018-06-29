@@ -1,4 +1,5 @@
-<?php  
+<?php 
+include '../include/auth.php';
 include '../include/database.php';
 
 // jika ada id yang di GET

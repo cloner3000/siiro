@@ -1,4 +1,6 @@
-<?php  
+<?php
+include '../include/auth.php';
+ 
 include '../include/database.php';
 
 // jika ada id yang di GET
@@ -59,7 +61,7 @@ if($_POST['id']){
 <h3 style="text-align: center;"><strong><u>REKOMENDASI</u></strong></h3>
 <p>&nbsp;</p>
 <p>
-Nomor&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: '.$nomor_surat.'&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Nomor&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: '.$nomor_surat.'&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 Sukabumi, '.$tanggal.'
 <br />Lampiran&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: -
 <br />Perihal&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp; Rekomendasi pembuatan Paspor
@@ -74,7 +76,7 @@ Sukabumi, '.$tanggal.'
 <p>Yang bertandatangan di bawah ini :</p>
 <p>
 Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Anggy Pradiftha Junfithrana S.Pd, MT<br />
-Jabatan&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Kepala Kantor Urusan Internasional</p>
+Jabatan&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; : Kepala Kantor Urusan Internasional</p>
 <p>Dengan ini menerangkan&nbsp;bahwa:</p>
 <p>
 Nama&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:  '.$nama.'<br />
