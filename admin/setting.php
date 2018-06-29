@@ -61,7 +61,7 @@ if(isset($_POST["submit"])) {
 
 					// redirect
 					$_SESSION['pesan'] = 'Suskses merubah';
-					header("Location: setting.php");
+					
 
 				} else {
 					echo "Ada kesalahan dalam Upload Logo";
@@ -79,7 +79,6 @@ if(isset($_POST["submit"])) {
 
 		// redirect
 		$_SESSION['pesan'] = 'Suskses merubah';
-		header("Location: setting.php");
 	}
 }
 ?>

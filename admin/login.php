@@ -17,9 +17,9 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
 	<link rel="stylesheet" href="../assets/css/font-awesome.css">
 </head>
 <body class="w3-light-grey">
-	<form method="post" class="w3-card w3-padding w3-white" style="width: 400px; margin-top: 150px;margin: auto; margin-top: 50px">
+	<form method="post" class="w3-card w3-padding w3-white w3-round" style="width: 300px; margin-top: 150px;margin: auto; margin-top: 50px">
     <p class="w3-center"><img class="w3-padding" src="../uploads/logo/<?php echo $setting['logo']; ?>" style="width: 200px"></p>
-		<h2 class="w3-center">Login <?php echo $setting['nama_website']; ?></h2>
+		<h3 class="w3-center"><?php echo $setting['nama_website']; ?></h3>
 		<?php
             if(isset($_POST['submit'])){
               $user = mysqli_real_escape_string($conn,$_POST["user"]);
