@@ -33,8 +33,8 @@ if($theme_color == 'red'){
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php if(isset($title)){echo $title.' - '; }?><?php echo $setting['nama_website']; ?></title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/ico" href="../favicon.ico">
   <link rel="stylesheet" href="../assets/css/w3.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/<?php echo $style ?>">
   <link rel="stylesheet" href="../assets/css/custom.css">
