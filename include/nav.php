@@ -16,11 +16,12 @@
 	</div>
 
 	<!-- Menu Intern -->
-	<a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>INTERNS<i class="w3-margin-left fa fa-caret-down"></i></a>
+	<a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php' | $page_name == 'intern_kandidat.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>INTERNS<i class="w3-margin-left fa fa-caret-down"></i></a>
 
-	<div id="Demo2" class="w3-hide <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php'){echo 'w3-show';} ?>">
+	<div id="Demo2" class="w3-hide <?php if($page_name == 'intern.php' | $page_name == 'intern_file.php' | $page_name == 'intern_sertifikat.php' | $page_name == 'intern_kandidat.php'){echo 'w3-show';} ?>">
 		<a href="intern.php" class="w3-bar-item w3-button <?php if($page_name == 'intern.php'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right w3-margin-left"></i>Intern</a>
 		<a href="intern_file.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_file.php'){echo 'w3-theme';} ?>"><i class="fa fa-file w3-margin-right w3-margin-left"></i>Intern File</a>
+		<a href="intern_kandidat.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_kandidat.php'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right w3-margin-left"></i>Kandidat</a>
 		<a href="intern_sertifikat.php" class="w3-bar-item w3-button <?php if($page_name == 'intern_sertifikat.php'){echo 'w3-theme';} ?>"><i class="fa fa-image w3-margin-right w3-margin-left"></i>Sertifikat</a>
 	</div>
 

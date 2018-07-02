@@ -13,7 +13,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
 	<title>Login <?php echo $setting['nama_website']; ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/ico" href="../favicon.ico">
+  <link rel="icon" type="image/png" href="../logo.png">
 	<link rel="stylesheet" href="../assets/css/w3.css">
 	<link rel="stylesheet" href="../assets/css/font-awesome.css">
 </head>
