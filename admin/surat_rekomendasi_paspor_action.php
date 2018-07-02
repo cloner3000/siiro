@@ -36,66 +36,92 @@ if($_POST['id']){
 	$tgl = date('Y-m-d');
 	$tanggal = tanggal_indo($tgl);
 	echo '
-<style>
-.print-only{
-    display: none;
-}
-
-@media print {
-    .no-print {
-        display: none;
-    }
-
-    .print-only{
-        display: block;
-    }
-}
-</style>
-
-<div class="print-only">
-<br>
-<br>
-<br>
-<br>
-<br>
-<h3 style="text-align: center;"><strong><u>REKOMENDASI</u></strong></h3>
-<p>&nbsp;</p>
-<p>
-Nomor&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: '.$nomor_surat.'&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-Sukabumi, '.$tanggal.'
-<br />Lampiran&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: -
-<br />Perihal&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:&nbsp; Rekomendasi pembuatan Paspor
-</p>
-<p>&nbsp;</p>
-<p>
-	Kepada Yth.&nbsp;&nbsp;&nbsp; :<br />
-	Kepala Kantor Imigrasi Kelas II Sukabumi.<br />di tempat
-</p>
-<p>&nbsp;</p>
-<p>Dengan Hormat</p>
-<p>Yang bertandatangan di bawah ini :</p>
-<p>
-Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Anggy Pradiftha Junfithrana S.Pd, MT<br />
-Jabatan&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; : Kepala Kantor Urusan Internasional</p>
-<p>Dengan ini menerangkan&nbsp;bahwa:</p>
-<p>
-Nama&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:  '.$nama.'<br />
-Alamat&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:  '.$alamat.'<br />
-Nomor KTP&nbsp; &nbsp; &nbsp;:  '.$nomor_ktp.'<br />
-Jurusan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :  '.$jurusan.'</p>
-<p>Yang&nbsp;bersangkutan memang benar Mahasiswa di kampus kami yang akan mengikuti Program Internasional Seminar ICCED 2018 pada bulan September dengan tujuan negara Thailand.</p>
-<p>Demikianlah surat rekomendasi ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
-<p>&nbsp;</p>
-<p>Hormat Kami<br />Kepala Kantor Urusan Internasional<br />Universitas Nusa Putra</p>
-<img src="../uploads/image/ttd_anggy.png" style="height:100px;position:absolute;"/><br>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<strong><u>Anggy Pradiftha Junfithrana S.Pd, MT</u></strong>
-</div>
-<script>
-    window.print();
-    window.close();
-</script>
+<p><br /><br /><br /><br /><br /><br /></p>
+<p style="margin-bottom: .0001pt; text-align: center;"><strong><u><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">REKOMENDASI</span></u></strong></p>
+<p style="margin-bottom: .0001pt; text-align: center;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">&nbsp;</span></p>
+<table style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 17.1636%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Nomor</span></td>
+<td style="width: 1.70358%; height: 18px;">:</td>
+<td style="width: 43.8671%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">00</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">1</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">/U.NSP/AIS/V</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">I</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">I/2018&nbsp;</span></td>
+<td style="width: 37.4361%; height: 18px; text-align: right;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Sukabumi, </span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">1</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;"> Ju</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">li</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;"> 2018</span></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 17.1636%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Lampiran</span></td>
+<td style="width: 1.70358%; height: 18px;">:</td>
+<td style="width: 43.8671%; height: 18px;">-</td>
+<td style="width: 37.4361%; height: 18px;">&nbsp;</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 17.1636%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Perihal</span></td>
+<td style="width: 1.70358%; height: 18px;">:</td>
+<td style="width: 43.8671%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Rekomendasi pembuatan Paspor</span></td>
+<td style="width: 37.4361%; height: 18px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-bottom: .0001pt;">&nbsp;</p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Kepada Yth.&nbsp;&nbsp;&nbsp; :</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Kepala Kantor Imigrasi Kelas II Sukabumi.</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">di tempat</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">&nbsp;</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">Dengan Hormat</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Yang bertandatangan di bawah ini :</span></p>
+<table style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 24.8154%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Nama Lengkap</span></td>
+<td style="width: 1.87394%; height: 18px;">:</td>
+<td style="width: 73.3105%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Anggy Pradiftha Junfithrana S.Pd, MT</span></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 24.8154%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Jabatan</span></td>
+<td style="width: 1.87394%; height: 18px;">:</td>
+<td style="width: 73.3105%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Kepala Kantor Urusan Internasional</span></td>
+</tr>
+</tbody>
+</table>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Dengan ini menerangkan&nbsp;bahwa:</span></p>
+<table style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 24.9858%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Nama&nbsp; Lengkap</span></td>
+<td style="width: 1.81709%; height: 18px;">:</td>
+<td style="width: 73.197%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Neng Robiyah</span></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 24.9858%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">Tempat/Tgl Lahir</span></td>
+<td style="width: 1.81709%; height: 18px;">:</td>
+<td style="width: 73.197%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">Cianjur, 16-11-1995</span></td>
+</tr>
+<tr style="height: 36px;">
+<td style="width: 24.9858%; height: 36px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Alamat&nbsp;</span></td>
+<td style="width: 1.81709%; height: 36px;">:</td>
+<td style="width: 73.197%; height: 36px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Kp. Sukamukti, RT 003 RW 005, Desa Cimenteng,&nbsp;Kec. Campaka, Kab. Cianjur</span></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 24.9858%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Nomor KTP</span></td>
+<td style="width: 1.81709%; height: 18px;">:</td>
+<td style="width: 73.197%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">3203155611950007</span></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 24.9858%; height: 18px;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Jurusan</span></td>
+<td style="width: 1.81709%; height: 18px;">:</td>
+<td style="width: 73.197%; height: 18px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-bottom: .0001pt; text-align: justify;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;"><br />Yang&nbsp;bersangkutan memang benar </span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">m</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">ahasiswa </span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">tingkat akhir </span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">di kampus kami yang akan mengikuti </span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">program seminar internasional dalam kegiatan <em>International Conference on Computing Engineering and Design</em></span> <span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">(</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">ICCED 2018</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">)</span><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;"> pada bulan September dengan tujuan negara Thailand.</span></p>
+<p style="margin-bottom: .0001pt; text-align: justify;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Demikianlah surat rekomendasi ini dibuat untuk dipergunakan sebagaimana mestinya.</span></p>
+<p style="margin-bottom: .0001pt;">&nbsp;</p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Hormat Kami</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Kepala Kantor Urusan Internasional</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Universitas Nusa Putra</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif;">&nbsp;</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">&nbsp;</span></p>
+<p style="margin-bottom: .0001pt;"><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">&nbsp;</span></p>
+<p><strong><u><span style="font-size: 12.0pt; line-height: 115%; font-family: "Times New Roman",serif; color: black;">Anggy Pradiftha Junfithrana S.Pd, MT</span></u></strong></p>
 ';
 	
 // jika tidak ada id di get redirext
