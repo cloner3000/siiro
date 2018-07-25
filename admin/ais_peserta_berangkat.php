@@ -1,5 +1,6 @@
 <?php 
-$page = 'ais_peserta';
+$page = 'ais_peserta_berangkat';
+$title = 'Peserta Berangkat';
 include "../include/header.php";
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 ?>
@@ -15,6 +16,7 @@ $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 $xcrud->table('ais_peserta');
 $xcrud->where('status =', 'Peserta');
 $xcrud->where('periode_tahun =', $ais_periode_tahun);
+$xcrud->where('ikut_travel =', 'Ya');
 $xcrud->order_by('kelompok');
 
 

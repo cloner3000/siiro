@@ -159,6 +159,32 @@ $jumlah_tahun2014 = mysqli_num_rows($mou_tahun2014);
 			Kelompok
 		</div>
 	</div>
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-red ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-users"></i>
+				<?php
+				$ais_kelompok = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM ais_peserta WHERE periode_tahun = '$ais_periode_tahun' AND status = 'Peserta' AND ikut_travel = 'Ya'"));
+				echo $ais_kelompok;
+				?>
+			</div>
+			Peserta Ikut Travel
+		</div>
+	</div>
+	<div class="w3-quarter">
+		<div class="w3-card-4 w3-margin w3-padding w3-pale-blue ">
+
+			<div class="w3-xxlarge">
+				<i class="fa fa-users"></i>
+				<?php
+				$ais_kelompok = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM ais_peserta WHERE periode_tahun = '$ais_periode_tahun' AND scan_paspor !='' "));
+				echo $ais_kelompok;
+				?>
+			</div>
+			Paspor Terkumpul
+		</div>
+	</div>
 </div>
 
 <div class="w3-row">
