@@ -1,6 +1,7 @@
 <?php 
 $title = 'Surat Keterangan Mengikuti AIS';
 include "../include/header.php";
+include "../include/function.php";
 ?>
 <div class="w3-container">
 
@@ -69,20 +70,27 @@ if(isset($_POST['submit'])){
 													<?php 
 
 													$tahun = date('Y');
-													$bulan = date('m');
+													$bulan = getRomawi(date('m'));
+													$id_peserta_ais = $row['id'];
 
-													$no_surat = mysqli_fetch_assoc(mysqli_query($conn,"
-														SELECT *
-														FROM surat_nomor
-														WHERE tahun = '$tahun' AND bulan = '$bulan' AND jenis = 'keluar'"));
-													if($no_surat){
-														$no_surat = $no_surat['surat_ke'] + 1;
+													$cek_surat = mysqli_query($conn,"SELECT * FROM surat_nomor WHERE id_peserta_ais = '$id_peserta_ais' ");
+
+													if(mysqli_num_rows($cek_surat) > 0){
+														$hasil_surat = mysqli_fetch_assoc($cek_surat);
+														$no_surat = $hasil_surat['nomor'];
 													}else{
-														$no_surat = 1;
+														$no_surat = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM surat_nomor WHERE tahun = '$tahun' AND bulan = '$bulan' AND jenis = 'keluar'"));
+														if($no_surat){
+															$no_surat = ($no_surat['surat_ke'] + 1).'/U.NSP/AIS/'.date('m/Y');
+														}else{
+															$no_surat = sprintf("%03s", 1).'/U.NSP/AIS/'.date('m/Y');
+														}
 													}
+
+													
 													 ?>
 													<label>Nomor Surat</label>
-													<input type="text" name="nomor_surat" class="w3-input w3-border" value="<?php echo 'IRO/NSP/'.date('Y/m').'/'.$no_surat; ?>">
+													<input type="text" name="nomor_surat" class="w3-input w3-border" value="<?php echo $no_surat; ?>">
 												</p>
 												<p>
 													<label>Nama</label>
@@ -101,7 +109,7 @@ if(isset($_POST['submit'])){
 													<input type="text" name="semester" class="w3-input w3-border">
 												</p>
 
-													<input type="text" name="id" class="w3-hide" value="<?php echo $row['id'] ?>">
+													<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
 
 											</div>
 											<footer class="w3-container w3-light-grey w3-padding w3-border">
