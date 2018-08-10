@@ -44,17 +44,19 @@
 	</div>
 
 	<!-- Menu conference -->
-	<a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'conference_email.php' ){echo 'w3-grey';} ?>"><i class="fa fa-trophy w3-margin-right"></i>CONFERENCE<i class="w3-margin-left fa fa-caret-down"></i></a>
+	<a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'conference_email.php' | $page_name == 'conference_sertifikat.php'){echo 'w3-grey';} ?>"><i class="fa fa-trophy w3-margin-right"></i>CONFERENCE<i class="w3-margin-left fa fa-caret-down"></i></a>
 
-	<div id="Demo3" class="w3-hide <?php if($page_name == 'conference_email.php' ){echo 'w3-show';} ?>">
+	<div id="Demo3" class="w3-hide <?php if($page_name == 'conference_email.php' | $page_name == 'conference_sertifikat.php' ){echo 'w3-show';} ?>">
 		<a href="conference_email.php" class="w3-bar-item w3-button <?php if($page_name == 'conference_email.php'){echo 'w3-theme';} ?>"><i class="fa fa-envelope w3-margin-right w3-margin-left"></i>Email Univ</a>
+		<a href="conference_sertifikat.php" class="w3-bar-item w3-button <?php if($page_name == 'conference_sertifikat.php'){echo 'w3-theme';} ?>"><i class="fa fa-file-pdf-o w3-margin-right w3-margin-left"></i>Sertifikat</a>
 	</div>
 
 	<!-- Menu Surat -->
-	<a id="myBtn" onclick="myFunc('Demo5')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'surat.php' | $page_name == 'surat_rekomendasi_paspor.php'){echo 'w3-grey';} ?>"><i class="fa fa-envelope w3-margin-right"></i>SURAT<i class="w3-margin-left fa fa-caret-down"></i></a>
+	<a id="myBtn" onclick="myFunc('Demo5')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'surat.php' | $page_name == 'surat_rekomendasi_paspor.php' | $page_name == 'surat_keterangan_ais.php' ){echo 'w3-grey';} ?>"><i class="fa fa-envelope w3-margin-right"></i>SURAT<i class="w3-margin-left fa fa-caret-down"></i></a>
 
-	<div id="Demo5" class="w3-hide <?php if($page_name == 'surat.php' | $page_name == 'surat_rekomendasi_paspor.php'){echo 'w3-show';} ?>">
+	<div id="Demo5" class="w3-hide <?php if($page_name == 'surat.php' | $page_name == 'surat_rekomendasi_paspor.php' | $page_name == 'surat_keterangan_ais.php' ){echo 'w3-show';} ?>">
 		<a href="surat_rekomendasi_paspor.php" class="w3-bar-item w3-button <?php if($page_name == 'surat_rekomendasi_paspor.php'){echo 'w3-theme';} ?>"><i class="fa fa-envelope-o w3-margin-right w3-margin-left"></i>Rek. Paspor</a>
+		<a href="surat_keterangan_ais.php" class="w3-bar-item w3-button <?php if($page_name == 'surat_keterangan_ais.php'){echo 'w3-theme';} ?>"><i class="fa fa-envelope-o w3-margin-right w3-margin-left"></i>Keterangan AIS</a>
 	</div>
 
     <!-- Menu Setting -->
