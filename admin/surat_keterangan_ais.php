@@ -81,9 +81,9 @@ if(isset($_POST['submit'])){
 													}else{
 														$no_surat = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM surat_nomor WHERE tahun = '$tahun' AND bulan = '$bulan' AND jenis = 'keluar'"));
 														if($no_surat){
-															$no_surat = ($no_surat['surat_ke'] + 1).'/U.NSP/AIS/'.date('m/Y');
+															$no_surat = ($no_surat['surat_ke'] + 1).'/U.NSP/AIS/'.$bulan.'/'.date('Y');
 														}else{
-															$no_surat = sprintf("%03s", 1).'/U.NSP/AIS/'.date('m/Y');
+															$no_surat = sprintf("%03s", 1).'/U.NSP/AIS/'.$bulan.'/'.date('Y');
 														}
 													}
 
