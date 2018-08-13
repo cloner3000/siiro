@@ -1,14 +1,18 @@
 <?php 
 
+// set varuable dari value form
+$nomor_sertifikat = $_POST['nomor_sertifikat'];
+$nama = $_POST['nama'];
+$status = $_POST['status'];
+
+if(isset($nama)){
 // Set the content-type
 header('Content-Type: image/png');
 
 // Create the image
 $gambar = '../uploads/sertifikat/icced2018.png';
-$bar = '../uploads/sertifikat/barcode.png';
 // $im = imagecreatetruecolor(400, 30);
 $im = imagecreatefromjpeg($gambar);
-$barcode = imagecreatefrompng($bar);
 
 // Create some colors
 $white = imagecolorallocate($im, 255, 255, 255);
@@ -16,10 +20,16 @@ $grey = imagecolorallocate($im, 128, 128, 128);
 $black = imagecolorallocate($im, 0, 0, 0);
 // imagefilledrectangle($im, 0, 0, 399, 29, $white);
 
-// set varuable dari value form
-$nomor_sertifikat = $_POST['nomor_sertifikat'];
-$nama = $_POST['nama'];
-$status = $_POST['status'];
+// Barcode
+include '../include/barcode.php';
+$nomor_hash = sha1($nomor_sertifikat);
+$url = 'http://localhost/siiro/include/barcode.php?f=png&s=qr&d=http://nusaputra.ac.id/check.php?no='.$nomor_hash;
+$img = str_replace(' ','_',strtolower($nama).'.png');
+file_put_contents('../uploads/sertifikat/barcode/'.$img, file_get_contents($url));
+
+// nama barcode susuai dengan orang
+$bar = '../uploads/sertifikat/barcode/'.$img;
+$barcode = imagecreatefrompng($bar);
 
 // The text to draw
 $text = 'Testing...';
@@ -43,4 +53,8 @@ imagecopy($im, $barcode, 20, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($
 // Using imagepng() results in clearer text compared with imagejpeg()
 imagepng($im);
 imagedestroy($im);
+
+}else{
+	header('Location: conference_sertifikat.php');
+}
 ?>

@@ -13,7 +13,14 @@ if($_POST['id']){
 	$nama 					= $_POST['nama'];
 	$jurusan 				= $_POST['jurusan'];
 	$semester 				= $_POST['semester'];
+	$status_no_surat 		= $_POST['status_no_surat'];
+	// mengambil format surat
 	$surat_isi = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM surat_setting WHERE jenis_surat = 'surat_keterangan_ais' "));
+
+	// menyimpan surat dengan id penerima jika status_no_surat == tidak_ada
+	if($status_no_surat == "tidak_ada"){
+		mysqli_query($conn,"INSERT INTO surat_nomor (nomor,id_peserta_ais) VALUES ('$nomor_surat','$id')");
+	}
 
 	// tanggal
 	function tanggal_indo($tanggal)

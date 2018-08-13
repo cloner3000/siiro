@@ -1,5 +1,5 @@
 <?php 
-$title = 'Surat Keterangan Mengikuti AIS';
+$title = 'Surat ket Mengikuti AIS';
 include "../include/header.php";
 include "../include/function.php";
 ?>
@@ -78,18 +78,23 @@ if(isset($_POST['submit'])){
 													if(mysqli_num_rows($cek_surat) > 0){
 														$hasil_surat = mysqli_fetch_assoc($cek_surat);
 														$no_surat = $hasil_surat['nomor'];
+														// menyimpan status nomor surat ada
+														$status_no_surat = "ada";
 													}else{
 														$no_surat = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM surat_nomor WHERE tahun = '$tahun' AND bulan = '$bulan' AND jenis = 'keluar'"));
 														if($no_surat){
 															$no_surat = ($no_surat['surat_ke'] + 1).'/U.NSP/AIS/'.$bulan.'/'.date('Y');
+															$status_no_surat = "tidak_ada";
 														}else{
 															$no_surat = sprintf("%03s", 1).'/U.NSP/AIS/'.$bulan.'/'.date('Y');
+															$status_no_surat = "tidak_ada";
 														}
 													}
 
 													
 													 ?>
 													<label>Nomor Surat</label>
+													<br>
 													<input type="text" name="nomor_surat" class="w3-input w3-border" value="<?php echo $no_surat; ?>">
 												</p>
 												<p>
@@ -110,10 +115,11 @@ if(isset($_POST['submit'])){
 												</p>
 
 													<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+													<input type="hidden" name="status_no_surat" value="<?php echo $status_no_surat ?>">
 
 											</div>
 											<footer class="w3-container w3-light-grey w3-padding w3-border">
-												<button class="w3-button w3-green" type="submit"><i class="fa fa-print"></i> Cetak Surat</button>
+												<button class="w3-button w3-green" type="submit" onClick="window.location.reload()"><i class="fa fa-print"></i> Cetak Surat</button>
 											</footer>
 										</form>
 										</div>
