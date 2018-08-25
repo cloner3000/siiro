@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2018 at 03:59 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Generation Time: Aug 26, 2018 at 01:53 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,40 +58,12 @@ CREATE TABLE `ais_kelompok` (
 --
 
 INSERT INTO `ais_kelompok` (`id`, `nama`, `jenis`, `keterangan`, `periode_tahun`) VALUES
-(9, 'SI 1', '', '', 2018),
-(10, 'SI 2', '', '', 2018),
-(11, 'SI 3', '', '', 2018),
-(12, 'SI 4', '', '', 2018),
-(13, 'SI 5', '', '', 2018),
-(14, 'SI 6', '', '', 2018),
-(15, 'SI 7', '', '', 2018),
-(16, 'SI 8', '', '', 2018),
-(17, 'SI 9', '', '', 2018),
-(18, 'SI 10', '', '', 2018),
-(19, 'SI 11', '', '', 2018),
-(20, 'SI 12', '', '', 2018),
-(21, 'TI 1', '', '', 2018),
-(22, 'TI 2', '', '', 2018),
-(23, 'TI 3', '', '', 2018),
-(24, 'TI 4', '', '', 2018),
-(25, 'TI 5', '', '', 2018),
-(26, 'TI 6', '', '', 2018),
-(27, 'TI 7', '', '', 2018),
-(28, 'TI 8', '', '', 2018),
-(29, 'TI 9', '', '', 2018),
-(30, 'TI 10', '', '', 2018),
-(31, 'TS 1', '', '', 2018),
-(32, 'TS 2', '', '', 2018),
-(33, 'TS 3', '', '', 2018),
-(34, 'TS 4', '', '', 2018),
-(35, 'TS 5', '', '', 2018),
-(36, 'TS 6', '', '', 2018),
-(37, 'TS 7', '', '', 2018),
-(39, 'TE 1', '', '', 2018),
-(40, 'TE 2', '', '', 2018),
-(41, 'TM 1', '', '', 2018),
-(42, 'TM 2', '', '', 2018),
-(43, 'TM 3', '', '', 2018);
+(3, 'Sistem Informasi 1', '', '', 2018),
+(4, 'Sistem Informasi 3', '', '', 2018),
+(5, 'Desain Komunikasi Visual 1', '', '', 2018),
+(6, 'Panitia', '', '', 2018),
+(7, 'Sistem Informasi 2', '', '', 2018),
+(8, 'Desain Komunikasi Visual 2', '', '', 2018);
 
 -- --------------------------------------------------------
 
@@ -117,7 +89,7 @@ CREATE TABLE `ais_peserta` (
   `kelompok` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `tanggal_lahir` date DEFAULT NULL,
+  `tanggal_lahir` date NOT NULL,
   `tempat_lahir` varchar(255) NOT NULL,
   `jurusan` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -127,121 +99,29 @@ CREATE TABLE `ais_peserta` (
   `scan_ktp` varchar(255) NOT NULL,
   `nomor_paspor` varchar(255) NOT NULL,
   `scan_paspor` varchar(255) NOT NULL,
-  `ikut_travel` varchar(255) NOT NULL,
+  `periode_tahun` int(11) NOT NULL,
   `pembayaran` int(11) DEFAULT '0',
-  `periode_tahun` int(11) NOT NULL
+  `sisa_pembayaran` varchar(255) DEFAULT '0',
+  `ikut_travel` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ais_peserta`
 --
 
-INSERT INTO `ais_peserta` (`id`, `kelompok`, `status`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jurusan`, `email`, `nomor_hp`, `alamat`, `nomor_ktp`, `scan_ktp`, `nomor_paspor`, `scan_paspor`, `ikut_travel`, `pembayaran`, `periode_tahun`) VALUES
-(9, '21', 'Peserta', 'M. Anton Permana', NULL, '', 'Teknik Informatika', 'anton.permana@nusaputra.ac.id', '', '', '3202040406960004', 'eal88ztgkb48kkk.jpg', 'B4094399', 'f5letyzzws8wwc0.jpg', 'Tidak', 0, 2018),
-(10, '21', 'Peserta', 'Agham Rahmadi Setiawan', '0000-00-00', '', 'Teknik Informatika', 'agham.rahmadi@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(12, '21,30,22', 'Pembimbing', 'Dedi Supardi, ST,M.Kom', NULL, '', '', 'dedi.supardi@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(13, '21', 'Peserta', 'Aryo Ardianto', '0000-00-00', '', 'Teknik Informatika', 'aryo.ardianto@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(14, '21', 'Peserta', 'Aditya Rachmawan', '0000-00-00', '', 'Teknik Informatika', 'aditya.rachmawan@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(19, '20', 'Peserta', 'Muhammad Ikhsan Thohir', '1993-04-15', 'Sukabumi', 'Sistem Inforamsi', 'ikhsan.thohir@gmail.com', '081615399070', 'Jl. Raya Cibolang Baru', '3202291504930003', 'bymg1tymcpkc4s4.jpg', 'B4094375', 'd2x4pxt4jq8gosw.jpg', 'Tidak', 0, 2018),
-(20, '22', 'Peserta', 'Deki Akbar', '0000-00-00', '', 'Desain Komunikasi Visual', 'deki.akbar@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(21, '22', 'Peserta', 'M. Gilang Fauzi', '0000-00-00', '', 'Desain Komunikasi Visual', 'gilang.fauzi@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(22, '22', 'Peserta', 'Restu Nugraha', '0000-00-00', '', 'Desain Komunikasi Visual', 'restu.nugraha@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(23, '22', 'Peserta', 'Ujang Heru Irawan', '0000-00-00', '', 'Desain Komunikasi Visual', 'ujang.heru@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(24, '23', 'Peserta', 'Asep Ramdan', '0000-00-00', '', 'Desain Komunikasi Visual', 'asep.ramdan@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(25, '23', 'Peserta', 'Irfanudin', '0000-00-00', '', 'Desain Komunikasi Visual', 'irfanudin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(26, '23', 'Peserta', 'Nasrullah', '0000-00-00', '', 'Desain Komunikasi Visual', 'nasrullah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(27, '23', 'Peserta', 'Lutfi Abdillah', '0000-00-00', '', 'Desain Komunikasi Visual', 'lutfi.abdillah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(28, '24', 'Peserta', 'M. Azizudin', '0000-00-00', '', 'Desain Komunikasi Visual', 'm.azizudin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(29, '24', 'Peserta', 'Saepul Rohman', '0000-00-00', '', 'Desain Komunikasi Visual', 'saepul.rohman@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(30, '24', 'Peserta', 'Cici Lestari', '0000-00-00', '', 'Desain Komunikasi Visual', 'cici.lestari@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(31, '24', 'Peserta', 'Wildatun Kasipah', '0000-00-00', '', 'Desain Komunikasi Visual', 'wildatun.kasipah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(32, '25', 'Peserta', 'Opie Sopyan', '0000-00-00', '', 'Desain Komunikasi Visual', 'opie.sopyan@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(33, '25', 'Peserta', 'Neng Robiyah', NULL, '', 'Teknik Informatika', 'neng.robiyah@nusaputra.ac.id', '', 'Kp. Sukamukti, RT003/005, Desa Cimenteng, Kec. Campaka, Kab. Cianjur', '3203155611950007', '', '', '', 'Tidak', 2000000, 2018),
-(34, '25', 'Peserta', 'Siti Ravika Nuryani', '0000-00-00', '', 'Desain Komunikasi Visual', 'siti.ravika@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(35, '25', 'Peserta', 'Redha Noormansyah', '0000-00-00', '', 'Desain Komunikasi Visual', 'redha.noormansyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(36, '26', 'Peserta', 'Elpid Multipi', '0000-00-00', '', 'Desain Komunikasi Visual', 'elpid.multipi@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(37, '26', 'Peserta', 'Aditya Rismawan', '0000-00-00', '', 'Desain Komunikasi Visual', 'aditya.rismawan@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(38, '26', 'Peserta', 'Yusup Maulana Nyaman', '0000-00-00', '', 'Desain Komunikasi Visual', 'yusup.maulana@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(39, '26', 'Peserta', 'Gunawansyah', '0000-00-00', '', 'Desain Komunikasi Visual', 'gunawansyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1500000, 2018),
-(40, '27', 'Peserta', 'Miraz Zumhadi Suwono', '0000-00-00', '', 'Desain Komunikasi Visual', 'miraz.zumhadi@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(41, '27', 'Peserta', 'Euis Liani', '0000-00-00', '', 'Desain Komunikasi Visual', 'euis.liani@nusaputra.ac.id', '', '', '32052854xx460003', 'd8ht7nyv5socgko.jpeg', '', '', 'Tidak', 1000000, 2018),
-(42, '27', 'Peserta', 'Dika Meldiana', '0000-00-00', '', 'Desain Komunikasi Visual', 'dika.meldiana@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(43, '27', 'Peserta', 'Ade Suryana', '0000-00-00', '', 'Desain Komunikasi Visual', 'ade.suryana@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(44, '28', 'Peserta', 'Ujang Indra Lesmana', '0000-00-00', '', 'Desain Komunikasi Visual', 'ujang.indra@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(45, '28', 'Peserta', 'Adjie Nurharsoyo', '0000-00-00', '', 'Desain Komunikasi Visual', 'adjie.nurharsoyo@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(46, '28', 'Peserta', 'Dicki Priyanto', '0000-00-00', '', 'Desain Komunikasi Visual', 'dicki.priyanto@nusaputra.ac.id', '', '', '3602191007940004', '3056p4m5aw008o4.jpeg', '', '', 'Tidak', 2000000, 2018),
-(47, '28', 'Peserta', 'Deden', '0000-00-00', '', 'Desain Komunikasi Visual', 'deden@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(48, '29', 'Peserta', 'Gilang Ginanjar', '0000-00-00', '', 'Desain Komunikasi Visual', 'gilang.ginanjar@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(49, '29', 'Peserta', 'Indra Indriansyah', '0000-00-00', '', 'Desain Komunikasi Visual', 'indra.indriansyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(50, '29', 'Peserta', 'Farenza Reynalda', '0000-00-00', '', 'Desain Komunikasi Visual', 'farenza.reynalda@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(51, '39', 'Peserta', 'Ragil Muhamad Fauzi', '0000-00-00', '', 'Desain Komunikasi Visual', 'ragil.muhamad@nusaputra.ac.id', '', '', '3202080706960009', 'fl1dro9l2n4kog8.jpeg', '', '', 'Tidak', 0, 2018),
-(52, '29', 'Peserta', 'Firman Pratama', '0000-00-00', '', 'Desain Komunikasi Visual', 'firman.pratama@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(53, '30', 'Peserta', 'Muhamad Ismail', NULL, '', 'Teknik Informatika', 'muhamad.ismail@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(54, '30', 'Peserta', 'Solahudin', NULL, '', 'Teknik Informatika', 'solahudin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(55, '30', 'Peserta', 'Rizal', NULL, '', 'Teknik Informatika', 'rizal@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(56, '9', 'Peserta', 'Kudin Rustaman', NULL, '', 'Sistem Inforamsi', 'kudin.rustaman@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(57, '9', 'Peserta', 'Yunita Gusti Nurani', NULL, '', 'Sistem Inforamsi', 'yunita.gusti@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(58, '9', 'Peserta', 'Neng Resti Noviansyah', NULL, '', 'Sistem Inforamsi', 'neng.resti@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(59, '9', 'Peserta', 'Aditya Nurfitri', NULL, '', 'Sistem Inforamsi', 'aditya.nurfitri@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(60, '10', 'Peserta', 'Ali Fahtiar Rahmawati', NULL, '', 'Sistem Inforamsi', 'ali.fahtiar@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1500000, 2018),
-(61, '10', 'Peserta', 'Titin', NULL, '', 'Sistem Inforamsi', 'titin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(62, '10', 'Peserta', 'Putri', NULL, '', 'Sistem Inforamsi', 'putri@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(63, '10', 'Peserta', 'Rian Rama Putra', NULL, '', 'Sistem Inforamsi', 'rian.rama@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(64, '11', 'Peserta', 'Muhammad Nurdin', NULL, '', 'Sistem Inforamsi', 'muhammad.nurdin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(65, '11', 'Peserta', 'Sholahudin', NULL, '', 'Sistem Inforamsi', 'sholahudin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 400000, 2018),
-(66, '11', 'Peserta', 'Nopian rizki', NULL, '', 'Sistem Inforamsi', 'nopian.rizki@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1500000, 2018),
-(67, '11', 'Peserta', 'Elsa Maula Utami', NULL, '', 'Sistem Inforamsi', 'elsa.maula@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(68, '12', 'Peserta', 'Muhammad Miftah', NULL, '', 'Sistem Inforamsi', 'muhammad.miftah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(69, '12', 'Peserta', 'Linda Santya', NULL, '', 'Sistem Inforamsi', 'linda.santya@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(70, '12', 'Peserta', 'Vilka Mandala', NULL, '', 'Sistem Inforamsi', 'vilka.mandala@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(71, '12', 'Peserta', 'Rena', NULL, '', 'Sistem Inforamsi', 'rena@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(72, '13', 'Peserta', 'Yulia Amanda', NULL, '', 'Sistem Inforamsi', 'yulia.amanda@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(73, '13', 'Peserta', 'deudeu Lisnawati', NULL, '', 'Sistem Inforamsi', 'deudeu.lisnawati@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(74, '13', 'Peserta', 'Desi Nuraeni', NULL, '', 'Sistem Inforamsi', 'desi.nuraeni@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(75, '13', 'Peserta', 'Bayu Firmansyah', NULL, '', 'Sistem Inforamsi', 'bayu.firmansyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(76, '14', 'Peserta', 'Neng Sirly', NULL, '', 'Sistem Inforamsi', 'neng.sirly@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(77, '14', 'Peserta', 'Wahyudin', NULL, '', 'Sistem Inforamsi', 'wahyudin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 0, 2018),
-(78, '14', 'Peserta', 'Dea Fitriah', NULL, '', 'Sistem Inforamsi', 'dea.fitriah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(79, '14', 'Peserta', 'Santi nur alawiyah', NULL, '', 'Sistem Inforamsi', 'santi.nur@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(80, '15', 'Peserta', 'Erdi Ardiansyah', NULL, '', 'Sistem Inforamsi', 'erdi.ardiansyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(81, '15', 'Peserta', 'Ana Zanatun Amalia', NULL, '', 'Sistem Inforamsi', 'ana.zanatun@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(82, '15', 'Peserta', 'Sarah Rahman', NULL, '', 'Sistem Inforamsi', 'sarah.rahman@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(83, '15', 'Peserta', 'Imam Fahrudin', NULL, '', 'Sistem Inforamsi', 'imam.fahrudin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(84, '16', 'Peserta', 'Ujang Isa Solehudin', NULL, '', 'Sistem Inforamsi', 'ujang.isa@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(85, '16', 'Peserta', 'Wulandari', NULL, '', 'Sistem Inforamsi', 'wulandari@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(86, '16', 'Peserta', 'Iis Nuraisyah', NULL, '', 'Sistem Inforamsi', 'iis.nuraisyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(87, '16', 'Peserta', 'Nira Maesarah', NULL, '', 'Sistem Inforamsi', 'nira.maesarah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(88, '17', 'Peserta', 'Rio Bagus S', NULL, '', 'Sistem Inforamsi', 'rio.bagus@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(89, '17', 'Peserta', 'Hela Rahmasari', NULL, '', 'Sistem Inforamsi', 'hela.rahmasari@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1500000, 2018),
-(90, '17', 'Peserta', 'Lorentina', NULL, '', 'Sistem Inforamsi', 'lorentina@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(91, '17', 'Peserta', 'Sri Ayu Ratnasari', NULL, '', 'Sistem Inforamsi', 'sri.ayu@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(92, '18', 'Peserta', 'Neng Nurhasanah', NULL, '', 'Sistem Inforamsi', 'neng.nurhasanah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(93, '18', 'Peserta', 'Intri Triani', NULL, '', 'Sistem Inforamsi', 'intri.triani@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(94, '18', 'Peserta', 'Tia Octaviani', NULL, '', 'Sistem Inforamsi', 'tia.octaviani@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(95, '18', 'Peserta', 'Gensa', NULL, '', 'Sistem Inforamsi', 'gensa@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 2000000, 2018),
-(96, '19', 'Peserta', 'Nur Apriyanti', NULL, '', 'Sistem Inforamsi', 'nur.apriyanti@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(97, '19', 'Peserta', 'Rahayu Awaliyah', NULL, '', 'Sistem Inforamsi', 'rahayu.awaliyah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(98, '19', 'Peserta', 'Annisa Desi Pratiwi', NULL, '', 'Sistem Inforamsi', 'annisa.desi@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(99, '19', 'Peserta', 'Agum Taufikurahman', NULL, '', 'Sistem Inforamsi', 'agum.taufikurahman@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 1000000, 2018),
-(100, '20', 'Peserta', 'Nur Hasanah', NULL, '', 'Sistem Inforamsi', 'nur.hasanah@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 500000, 2018),
-(101, '20', 'Peserta', 'Ucu Sutarmin', NULL, '', 'Sistem Inforamsi', 'ucu.sutarmin@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(102, '20', 'Peserta', 'Netta Septania', NULL, '', 'Sistem Inforamsi', 'netta.septania@nusaputra.ac.id', '', '', '', '', '', '', 'Tidak', 3000000, 2018),
-(103, '9,10,17', 'Pembimbing', 'Dudih Gustian, ST, M.Kom', NULL, '', '', 'dudih.gustian@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(104, '11,26', 'Pembimbing', 'M. Muslih, ST, M.Kom', NULL, '', '', 'muhamad.muslih@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(105, '12', 'Pembimbing', 'Nunik Destria A, ST,M.Kom', NULL, '', '', 'nunik@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(106, '18,13,14', 'Pembimbing', 'Sudin, S.T, M.Kom', NULL, '', '', 'sudin@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(107, '15,16', 'Pembimbing', 'Samsul Fahmi, M.Pd', NULL, '', '', 'samsul.pahmi@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(108, '19,40', 'Pembimbing', 'Mia Arma Desima, ST, MT', NULL, '', '', 'mia.arma@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(109, '20,29', 'Pembimbing', 'Anang Suryana, SPd, M.Si', NULL, '', '', 'anang.suryana@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(110, '23,24', 'Pembimbing', 'Hermanto, ST,M.Kom', NULL, '', '', 'hermanto@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(111, '23', 'Pembimbing', 'Muhammad Mahmud', NULL, '', '', 'muhammad.mahmud@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(112, '24', 'Pembimbing', 'Adrian Reza', NULL, '', '', 'adrian.reza@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(113, '25,26', 'Pembimbing', 'Somantri, ST, M.kom', NULL, '', '', 'somantri@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(114, '25', 'Pembimbing', 'Rian Hidayat M.Kom', NULL, '', '', '', '', '', '', '', '', '', '', 0, 2018),
-(115, '27,28', 'Pembimbing', 'Anggy Pradiftha J', NULL, '', '', 'mr.pradiftha@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(116, '30', 'Pembimbing', 'Mupaat', NULL, '', '', 'mupaat@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(117, '9', 'Pembimbing', 'Wisuda Jatmiko', NULL, '', '', 'wisuda.jatmiko@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018),
-(118, '18', 'Pembimbing', 'Dede Cahyadi', NULL, '', '', 'dede.cahyadi@nusaputra.ac.id', '', '', '', '', '', '', '', 0, 2018);
+INSERT INTO `ais_peserta` (`id`, `kelompok`, `status`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jurusan`, `email`, `nomor_hp`, `alamat`, `nomor_ktp`, `scan_ktp`, `nomor_paspor`, `scan_paspor`, `periode_tahun`, `pembayaran`, `sisa_pembayaran`, `ikut_travel`) VALUES
+(48, '3', 'Peserta', 'Ikhsan', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Ya'),
+(49, '5', 'Peserta', 'Ikhsan 2', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(50, '5', 'Peserta', 'Ikhsan 3', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(51, '3', 'Peserta', 'Ikhsan', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Ya'),
+(52, '5', 'Peserta', 'Ikhsan 2', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(53, '5', 'Peserta', 'Ikhsan 3', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(54, '3', 'Peserta', 'Ikhsan', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Ya'),
+(55, '5', 'Peserta', 'Ikhsan 2', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(56, '5', 'Peserta', 'Ikhsan 3', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(57, '3', 'Peserta', 'Ikhsan', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Ya'),
+(58, '5', 'Peserta', 'Ikhsan 2', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak'),
+(59, '5', 'Peserta', 'Ikhsan 3', '0000-00-00', '', '', '', '', '', '', '', '', '', 2018, 0, '0', 'Tidak');
 
 -- --------------------------------------------------------
 
@@ -259,6 +139,13 @@ CREATE TABLE `ais_pulang` (
   `keterangan` text NOT NULL,
   `periode_tahun` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ais_pulang`
+--
+
+INSERT INTO `ais_pulang` (`id`, `kelompok`, `ketua`, `anggota`, `nomor_penerbangan`, `tanggal_pulang`, `keterangan`, `periode_tahun`) VALUES
+(1, 'Kel 1', '12', '10,13,15', '', '0000-00-00', '', 2018);
 
 -- --------------------------------------------------------
 
@@ -282,7 +169,7 @@ CREATE TABLE `ais_setting` (
 --
 
 INSERT INTO `ais_setting` (`id`, `nama`, `tahun`, `negara`, `tanggal`, `biaya_travel`, `biaya_conference`, `keterangan`) VALUES
-(1, 'ICCED 2018', '2018', 'Thailand', '2018-09-06', 5700000, 3000000, ''),
+(1, 'ICCED 2018', '2018', 'Thailand', '2018-09-06', 5600000, 3000000, ''),
 (2, 'ICCED 2017', '2017', 'Malaysia', '0000-00-00', 0, 3000000, '');
 
 -- --------------------------------------------------------
@@ -438,6 +325,39 @@ CREATE TABLE `intern_file` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `intern_kandidat`
+--
+
+CREATE TABLE `intern_kandidat` (
+  `id` int(11) NOT NULL,
+  `sumber` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jenis_kelamin` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `kebangsaan` varchar(255) NOT NULL,
+  `negara` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `skype_id` varchar(255) NOT NULL,
+  `tanggal_accept` date NOT NULL,
+  `tanggal_kirim_email` date NOT NULL,
+  `tanggal_interview` date NOT NULL,
+  `tanggal_diterima` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `intern_kandidat`
+--
+
+INSERT INTO `intern_kandidat` (`id`, `sumber`, `type`, `nama`, `jenis_kelamin`, `tanggal_lahir`, `kebangsaan`, `negara`, `email`, `skype_id`, `tanggal_accept`, `tanggal_kirim_email`, `tanggal_interview`, `tanggal_diterima`, `status`, `keterangan`) VALUES
+(1, 'dasd', '', '', '', '0000-00-00', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', ''),
+(2, 'dasd', '', '', '', '0000-00-00', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mou`
 --
 
@@ -483,6 +403,53 @@ INSERT INTO `mou` (`id`, `document_id`, `partner`, `program`, `continent`, `coun
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nspgo_negara`
+--
+
+CREATE TABLE `nspgo_negara` (
+  `id` int(11) NOT NULL,
+  `nama_negara` varchar(255) NOT NULL,
+  `harga_poin` int(11) NOT NULL,
+  `kode_negara` varchar(255) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nspgo_negara`
+--
+
+INSERT INTO `nspgo_negara` (`id`, `nama_negara`, `harga_poin`, `kode_negara`, `keterangan`) VALUES
+(1, 'Singapura', 5, 'sg', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nspgo_peserta`
+--
+
+CREATE TABLE `nspgo_peserta` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jurusan` varchar(255) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `tahun_angkatan` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `ketarangan` varchar(255) NOT NULL,
+  `poin_dari` varchar(255) NOT NULL,
+  `poin` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nspgo_peserta`
+--
+
+INSERT INTO `nspgo_peserta` (`id`, `nama`, `jurusan`, `semester`, `tahun_angkatan`, `status`, `ketarangan`, `poin_dari`, `poin`) VALUES
+(4, 'Muhammad Ikhsan Thohir', 'Sistem Inforamsi', '8', '2014', 'Aktif', '', '', ''),
+(5, 'Zaenal Alamsyah', 'Sistem Inforamsi', '8', '2014', 'Aktif', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `setting`
 --
 
@@ -500,7 +467,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `nama_website`, `logo`, `alamat`, `deskripsi`, `theme`) VALUES
-(0, 'SIIRO', 'LOGO-IRO.jpg', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'green');
+(0, 'SIIRO', 'LOGO-IRO.jpg', 'Jl Raya Ciboalang No 21', 'Sistem Informasi IRO', 'orange');
 
 -- --------------------------------------------------------
 
@@ -661,9 +628,27 @@ ALTER TABLE `intern_file`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `intern_kandidat`
+--
+ALTER TABLE `intern_kandidat`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mou`
 --
 ALTER TABLE `mou`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nspgo_negara`
+--
+ALTER TABLE `nspgo_negara`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nspgo_peserta`
+--
+ALTER TABLE `nspgo_peserta`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -710,7 +695,7 @@ ALTER TABLE `ais_berangkat`
 -- AUTO_INCREMENT for table `ais_kelompok`
 --
 ALTER TABLE `ais_kelompok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ais_pembayaran`
@@ -722,7 +707,7 @@ ALTER TABLE `ais_pembayaran`
 -- AUTO_INCREMENT for table `ais_peserta`
 --
 ALTER TABLE `ais_peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `ais_pulang`
@@ -767,10 +752,28 @@ ALTER TABLE `intern_file`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `intern_kandidat`
+--
+ALTER TABLE `intern_kandidat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `mou`
 --
 ALTER TABLE `mou`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `nspgo_negara`
+--
+ALTER TABLE `nspgo_negara`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `nspgo_peserta`
+--
+ALTER TABLE `nspgo_peserta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `surat_keluar`
