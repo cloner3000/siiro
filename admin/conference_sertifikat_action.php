@@ -1,13 +1,15 @@
 <?php 
 
 // set varuable dari value form
-$nomor_sertifikat = $_POST['nomor_sertifikat'];
-$nama = $_POST['nama'];
-$status = $_POST['status'];
+$nomor_sertifikat 	= $_POST['nomor_sertifikat'];
+$nama 				= $_POST['nama'];
+$status 			= $_POST['status'];
 
 if(isset($nama)){
+
+
 // Set the content-type
-header('Content-Type: image/png');
+header('Content-Type: image/jpg');
 
 // Create the image
 $gambar = '../uploads/sertifikat/icced2018.png';
@@ -23,7 +25,7 @@ $black = imagecolorallocate($im, 0, 0, 0);
 // Barcode
 include '../include/barcode.php';
 $nomor_hash = sha1($nomor_sertifikat);
-$url = 'http://localhost/siiro/include/barcode.php?f=png&s=qr&d=http://nusaputra.ac.id/check.php?no='.$nomor_hash;
+$url = 'http://localhost/siiro/include/barcode.php?f=png&s=qr&d=http://check.nusaputra.ac.id/check.php?no='.$nomor_hash;
 $img = str_replace(' ','_',strtolower($nama).'.png');
 file_put_contents('../uploads/sertifikat/barcode/'.$img, file_get_contents($url));
 
@@ -53,6 +55,17 @@ imagecopy($im, $barcode, 20, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($
 // Using imagepng() results in clearer text compared with imagejpeg()
 imagepng($im);
 imagedestroy($im);
+
+// simpan kedatabase dokumen online
+// include database2
+include '../include/database2.php';
+$query = mysqli_query($conn2, "SELECT * FROM sertifikat_ais WHERE nomor = '$nomor_sertifikat' ");
+// cek jika nomor surat sudah ada 
+if(mysqli_num_rows($query) !== 1 ){
+	// menyimpan ke database
+	mysqli_query($conn2, "INSERT INTO sertifikat_ais (nomor,nomor_hash,nama,sebagai) VALUES ('$nomor_sertifikat','$nomor_hash','$nama','$status')");
+
+}
 
 }else{
 	header('Location: conference_sertifikat.php');

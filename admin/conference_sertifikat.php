@@ -65,22 +65,32 @@ if(isset($_POST['submit'])){
 											<div class="w3-container">
 												<p>
 													<?php 
+													include "../include/function.php";
 
 													$tahun = date('Y');
-													$bulan = date('m');
+													$bulan = getRomawi(date('m'));
+													$id_peserta_ais = $row['id'];
 
-													$no_surat = mysqli_fetch_assoc(mysqli_query($conn,"
-														SELECT *
-														FROM surat_nomor
-														WHERE tahun = '$tahun' AND bulan = '$bulan' AND jenis = 'keluar'"));
-													if($no_surat){
-														$no_surat = $no_surat['surat_ke'] + 1;
+													$cek_surat = mysqli_query($conn,"SELECT * FROM surat_nomor WHERE id_peserta_ais = '$id_peserta_ais' ");
+
+													if(mysqli_num_rows($cek_surat) > 0){
+														$hasil_surat = mysqli_fetch_assoc($cek_surat);
+														$no_surat = $hasil_surat['nomor'];
+														// menyimpan status nomor surat ada
+														$status_no_surat = "ada";
 													}else{
-														$no_surat = 1;
+														$no_surat = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM surat_nomor WHERE tahun = '$tahun' AND bulan = '$bulan' AND jenis = 'keluar'"));
+														if($no_surat){
+															$no_surat = ($no_surat['surat_ke'] + 1).'/U.NSP/AIS/'.$bulan.'/'.date('Y');
+															$status_no_surat = "tidak_ada";
+														}else{
+															$no_surat = sprintf("%03s", 1).'/U.NSP/AIS/'.$bulan.'/'.date('Y');
+															$status_no_surat = "tidak_ada";
+														}
 													}
-													 ?>
+													?>
 													<label>Nomor Sertifikat</label>
-													<input type="text" name="nomor_sertifikat" class="w3-input w3-border" value="<?php echo 'IRO/NSP/'.date('Y/m').'/'.$no_surat; ?>">
+													<input type="text" name="nomor_sertifikat" class="w3-input w3-border" value="<?php echo $no_surat; ?>">
 												</p>
 												<p>
 													<label>Nama</label>
