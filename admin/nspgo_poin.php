@@ -8,6 +8,7 @@ include '../include/header.php';
 $xcrud = Xcrud::get_instance();
 
 $xcrud->table('nspgo_peserta');
+$xcrud->where('poin_dari','IS NOT NULL');
 $xcrud->table_name('NSPGO Poin');
 
 // hide
