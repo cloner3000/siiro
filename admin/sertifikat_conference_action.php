@@ -1,17 +1,23 @@
 <?php 
 
 // set varuable dari value form
-$nomor 			= $_POST['nomor'];
-$author 		= $_POST['author'];
-$judul 			= $_POST['judul'];
+$id = $_GET['id'];
 
 
-
-// Set the content-type
+if(isset($id)){
 header('Content-Type: image/jpg');
 
+include '../include/database.php';
+$sertifikat = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM sertifikat_conference WHERE id_sertifikat = '$id' "));
+
+$author = $sertifikat['author'];
+$judul = $sertifikat['judul'];
+$nomor_sertifikat = $sertifikat['nomor'];
+
+// Set the content-type
+
 // Create the image
-$gambar = '../uploads/sertifikat/sertifikat_conference_author.jpg';
+$gambar = '../uploads/sertifikat/sertifikat_conference2018_author.jpg';
 // $im = imagecreatetruecolor(400, 30);
 $im = imagecreatefromjpeg($gambar);
 
@@ -23,17 +29,15 @@ $black = imagecolorallocate($im, 0, 0, 0);
 
 // Barcode
 include '../include/barcode.php';
-$nomor_hash = sha1($nomor);
+$nomor_hash = sha1($nomor_sertifikat);
 $url = 'http://localhost/siiro/include/barcode.php?f=png&s=qr&d=http://check.nusaputra.ac.id/check.php?no='.$nomor_hash.'&w=500&h=500';
-$img = str_replace(' ','_',strtolower($nama).'.png');
+$img = str_replace(' ','_',strtolower($author).'.png');
 file_put_contents('../uploads/sertifikat/barcode/'.$img, file_get_contents($url));
 
 // nama barcode susuai dengan orang
 $bar = '../uploads/sertifikat/barcode/'.$img;
 $barcode = imagecreatefrompng($bar);
 
-// The text to draw
-$text = 'Testing...';
 // Replace path by your own font path
 $font = '../assets/font/arial_bold.ttf';
 
@@ -48,22 +52,16 @@ $sx = imagesx($barcode);
 $sy = imagesy($barcode);
 
 // width to calculate positioning of the barcode. 
-imagecopy($im, $barcode, 2620, 500, 0, 0, imagesx($barcode), imagesy($barcode));
+imagecopy($im, $barcode, 20, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($barcode), imagesy($barcode));
 
 // Using imagepng() results in clearer text compared with imagejpeg()
 imagepng($im);
 imagedestroy($im);
 
-// simpan kedatabase dokumen online
-// include database2
-include '../include/database2.php';
-$query = mysqli_query($conn2, "SELECT * FROM sertifikat_ais WHERE nomor = '$nomor_sertifikat' ");
-// cek jika nomor surat sudah ada 
-if(mysqli_num_rows($query) !== 1 ){
-	// menyimpan ke database
-	mysqli_query($conn2, "INSERT INTO sertifikat_ais (nomor,nomor_hash,nama,sebagai) VALUES ('$nomor_sertifikat','$nomor_hash','$nama','$status')");
+// simpan ke database
+mysqli_query($conn, "UPDATE sertifikat_conference SET nomor_hash = '$nomor_hash' WHERE id_sertifikat = '$id' ");
 
+}else{
+	header('Location: conference_sertifikat.php');
 }
-
-
 ?>

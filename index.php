@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <title>SIIRO</title>
-=======
 <meta http-equiv="refresh" content="0;url=pages/index.html">
 <title></title>
 <script language="javascript">

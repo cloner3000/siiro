@@ -187,7 +187,7 @@ $jumlah_tahun2014 = mysqli_num_rows($mou_tahun2014);
 	</div>
 </div>
 
-<div class="w3-row">
+<!-- <div class="w3-row">
 	<div class="w3-col l6">
 		<div class="w3-padding w3-margin w3-card-4">
 			<canvas id="myChart"></canvas>
@@ -199,7 +199,7 @@ $jumlah_tahun2014 = mysqli_num_rows($mou_tahun2014);
 			<canvas id="myChart2"></canvas>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 <script src="../assets/js/Chart.min.js"></script>

@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 		<div class="w3-row">
 			<div class="w3-card-4">
 				<div class="w3-padding w3-theme w3-large">
-					Hasil Pencarian
+					Gasuk
 				</div>
 				<div class="">
 					<div style="overflow-x:auto;">

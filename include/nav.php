@@ -28,6 +28,14 @@
 	<!-- Menu MOU -->
 	<a href="mou.php" class="w3-bar-item w3-button <?php if($page_name == 'mou.php'){echo 'w3-theme';} ?>"><i class="fa fa-book w3-margin-right"></i>MOU & MOA</a>
 
+	<!-- Menu Arsip -->
+	<a id="myBtn" onclick="myFunc('arsip')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'arsip.php' | $page_name == 'arsip_jenis.php'){echo 'w3-grey';} ?>"><i class="fa fa-archive w3-margin-right"></i>ARSIP<i class="w3-margin-left fa fa-caret-down"></i></a>
+
+	<div id="arsip" class="w3-hide <?php if($page_name == 'arsip.php' | $page_name == 'arsip_jenis.php'){echo 'w3-show';} ?>">
+		<a href="arsip.php" class="w3-bar-item w3-button <?php if($page_name == 'arsip.php'){echo 'w3-theme';} ?>"><i class="fa fa-file w3-margin-right w3-margin-left"></i>Berkas</a>
+		<a href="arsip_jenis.php" class="w3-bar-item w3-button <?php if($page_name == 'arsip_jenis.php'){echo 'w3-theme';} ?>"><i class="fa fa-file w3-margin-right w3-margin-left"></i>Jenis Arsip</a>
+	</div>
+
 	<!-- Menu Ais -->
 	<a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'ais_peserta.php' | $page_name == 'ais_kelompok.php' | $page_name == 'ais_berangkat.php' | $page_name == 'ais_pulang.php' | $page_name == 'ais_kelompok_list.php' | $page_name == 'ais_pembayaran.php' | $page_name == 'ais_setting.php' | $page_name == 'ais_pembimbing.php' | $page_name == 'ais_kelompok_detail.php' | $page_name == 'ais_panitia.php'){echo 'w3-grey';} ?>"><i class="fa fa-inbox w3-margin-right"></i>AIS<i class="w3-margin-left fa fa-caret-down"></i></a>
 
