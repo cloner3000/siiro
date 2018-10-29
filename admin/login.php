@@ -32,7 +32,11 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
                 $_SESSION['username'] = $user;
                 $_SESSION['foto'] = $row['admin_foto'];
                 $_SESSION['nama'] = $row['admin_nama'];
-                $_SESSION['ais_periode_tahun'] = date('Y');
+                if (date('Y') == '2018') {
+                  $_SESSION['ais_periode_tahun'] = '2019';
+                }else{
+                  $_SESSION['ais_periode_tahun'] = date('Y');
+                }
                 $_SESSION['pesan'] = 'Selamat Datang '.$row['admin_nama'].' !';
                 // Redirect user to index.php
                 header("Location: index.php");
