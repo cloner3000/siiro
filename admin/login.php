@@ -24,20 +24,21 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
 		<?php
             if(isset($_POST['submit'])){
               $user = mysqli_real_escape_string($conn,$_POST["user"]);
-              $pass = mysqli_real_escape_string($conn,md5($_POST['pass']));
-              $sql = "SELECT * FROM tbl_admin WHERE admin_username = '$user' AND admin_password = '$pass' ";
+              $pass = mysqli_real_escape_string($conn,sha1($_POST['pass']));
+              $sql = "SELECT * FROM user WHERE username = '$user' AND password = '$pass' ";
               $result = mysqli_query($conn,$sql);
               $row = mysqli_fetch_assoc($result);
               if(mysqli_num_rows($result) > 0){
                 $_SESSION['username'] = $user;
-                $_SESSION['foto'] = $row['admin_foto'];
-                $_SESSION['nama'] = $row['admin_nama'];
+                $_SESSION['foto'] = $row['foto'];
+                $_SESSION['nama'] = $row['nama_user'];
+                $_SESSION['akses_level'] = $row['akses_level'];
                 if (date('Y') == '2018') {
                   $_SESSION['ais_periode_tahun'] = '2019';
                 }else{
                   $_SESSION['ais_periode_tahun'] = date('Y');
                 }
-                $_SESSION['pesan'] = 'Selamat Datang '.$row['admin_nama'].' !';
+                $_SESSION['pesan'] = 'Selamat Datang '.$row['nama_user'].' !';
                 // Redirect user to index.php
                 header("Location: index.php");
               }else{
