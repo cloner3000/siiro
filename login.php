@@ -63,7 +63,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
         }
         $_SESSION['pesan'] = 'Selamat Datang '.$row_ais['nama'].' !';
                 // Redirect user to index.php
-        header("Location: ais/menu.php?page=dashboard");
+        header("Location: ais/menu.php?page=detail");
       }else{
         echo '
         <div class="w3-padding w3-red">Username atau Password Salah</div>
