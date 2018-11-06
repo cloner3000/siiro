@@ -8,6 +8,10 @@ $xcrud = Xcrud::get_instance();
 $url = $_SERVER['REQUEST_URI'];
 $parts = parse_url($url);
 $page_name = basename($parts['path']);
+$page_nama = basename($url);
+
+// tahun ais
+$ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 
 // query setting
 $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'));

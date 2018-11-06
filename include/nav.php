@@ -3,10 +3,18 @@
 		<img src="../uploads/logo/<?php echo $setting['logo']; ?>" width="80%">
 	</div>
 
-	<!-- Menu dashboard -->
-	<a href="index.php" class="w3-bar-item w3-button <?php if($page_name == 'index.php'){echo 'w3-theme';} ?>"><i class="fa fa-star w3-margin-right"></i>DASHBOARD</a>
+	<?php if($_SESSION['akses_level'] == 'peserta_ais'){ ?>
+	<!-- Menu detail -->
+	<a href="menu.php?page=detail" class="w3-bar-item w3-button <?php if($page_nama == 'menu.php?page=detail'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right"></i>DETAIL</a>
+	<!-- Menu editprofile -->
+	<a href="menu.php?page=editprofile" class="w3-bar-item w3-button <?php if($page_nama == 'menu.php?page=editprofile'){echo 'w3-theme';} ?>"><i class="fa fa-edit w3-margin-right"></i>EDIT</a>
+	<?php } ?>
+	
 
 	<?php if($_SESSION['akses_level'] == 'admin'){ ?>
+	<!-- Menu DASHBOARD -->
+	<a href="index.php" class="w3-bar-item w3-button <?php if($page_name == 'index.php'){echo 'w3-theme';} ?>"><i class="fa fa-star w3-margin-right"></i>DASHBOARD</a>
+
 	<!-- Menu NSPGO -->
 	<a id="myBtn" onclick="myFunc('Demo7')" href="javascript:void(0)" class="w3-bar-item w3-button <?php if($page_name == 'nspgo_peserta.php' | $page_name == 'nspgo_poin.php' | $page_name == 'nspgo_negara.php'){echo 'w3-grey';} ?>"><i class="fa fa-globe w3-margin-right"></i>NSPGO<i class="w3-margin-left fa fa-caret-down"></i></a>
 
@@ -79,7 +87,7 @@
 	<?php } ?>
 
 	<!-- menu logout -->
-	<a href="logout.php" class="w3-bar-item w3-button w3-black" onclick="return confirm('Yakin Keluar?')"><i class="fa fa-sign-out w3-margin-right"></i>LOGOUT</a>
+	<a href="../logout.php" class="w3-bar-item w3-button w3-black" onclick="return confirm('Yakin Keluar?')"><i class="fa fa-sign-out w3-margin-right"></i>LOGOUT</a>
 
 </nav>
 
@@ -92,7 +100,7 @@
 
 		<button class="w3-button w3-theme w3-large w3-hide-large" onclick="w3_open()">&#9776;</button>
 		<span class="w3-button w3-hide-small"><?php if(isset($title)){echo $title; }else{echo $setting['nama_website'];}?></span>
-		<span class="w3-button w3-right w3-theme-d4"><i class="fa fa-calendar"></i> <?php echo date('d-m-Y'); ?></span>
+		<button class="w3-button w3-right w3-theme-d4"><span class="w3-medium"><i class="fa fa-calendar"></i> <?php echo date('d-m-Y'); ?></span></button>
 	</div>
 
 	<div style="margin-top: 20px">
