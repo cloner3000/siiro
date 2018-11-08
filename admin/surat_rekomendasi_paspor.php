@@ -2,6 +2,8 @@
 $page = 'surat_rekomendasi_paspor';
 $title = 'Surat Rekomendasi Paspor';
 include "../include/header.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
 ?>
 <div class="w3-container">
 

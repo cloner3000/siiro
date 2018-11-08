@@ -1,6 +1,9 @@
 <?php 
 $page = 'ais_pulang';
 include "../include/header.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
+
 ?>
 
 <div class="w3-container">

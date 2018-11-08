@@ -3,6 +3,9 @@ $page = 'ais_peserta_detail';
 $title = 'AIS Peserta Detail';
 
 include "../include/header.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
+
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 
 // get id

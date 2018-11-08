@@ -3,6 +3,11 @@ $page = 'ais_kelompok_detail';
 $title = 'AIS Kelompok Detail';
 
 include "../include/header.php";
+
+// cek akses
+cekAdmin($_SESSION['akses_level']);
+
+
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 
 // get id

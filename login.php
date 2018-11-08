@@ -55,7 +55,7 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
         $_SESSION['foto'] = $row_ais['foto'];
         $_SESSION['nama'] = $row_ais['nama'];
         $_SESSION['akses_level'] = 'peserta_ais';
-        $_SESSION['peseta_id'] = $row_ais['id'];
+        $_SESSION['peserta_id'] = $row_ais['id'];
         if (date('Y') == '2018') {
           $_SESSION['ais_periode_tahun'] = '2019';
         }else{

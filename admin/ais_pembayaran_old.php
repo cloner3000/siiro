@@ -2,6 +2,8 @@
 $page = 'ais_pembayaran';
 $title = 'AIS Pembayaran';
 include "../include/header.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
 ?>
 <div class="w3-padding w3-green">
 	Periode Tahun : <b><?php echo $_SESSION['ais_periode_tahun']; ?></b>

@@ -1,7 +1,9 @@
 <?php 
 $title = 'Surat ket Mengikuti AIS';
 include "../include/header.php";
-include "../include/function.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
+
 ?>
 <div class="w3-container">
 

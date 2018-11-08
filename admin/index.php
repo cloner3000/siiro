@@ -2,8 +2,8 @@
 $page = 'index';
 $title 	= 'Dashboard';
 include "../include/header.php";
-include "../include/database.php";
-?>
+// cek akses
+cekAdmin($_SESSION['akses_level']);?>
 <?php 
 // get ais periode tahun
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];

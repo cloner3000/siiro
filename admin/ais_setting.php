@@ -1,7 +1,8 @@
 <?php 
 $page = 'ais_peserta';
 include "../include/header.php";
-include "../include/database.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
 
 // menentukan tahun
 $tahun = $_SESSION['ais_periode_tahun'];

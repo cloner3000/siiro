@@ -1,6 +1,9 @@
 <?php 
 $page = 'ais_peserta';
 include "../include/header.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
+
 $ais_periode_tahun = $_SESSION['ais_periode_tahun'];
 ?>
 
@@ -32,7 +35,7 @@ $xcrud->relation('kelompok','ais_kelompok','id','nama','periode_tahun = '.$ais_p
 $xcrud->change_type('jurusan','select','',',Desain Komunikasi Visual,Sistem Inforamsi,Teknik Informatika,Teknik Sipil,Teknik Elektro,Teknik Mesin');
 
 // custom kolom
-$xcrud->columns('kelompok,nama,email,nomor_paspor,scan_paspor');
+$xcrud->columns('kelompok,nama,email,email_kampus,nomor_hp');
 // $xcrud->change_type('status','select','','Peserta,Pembimbing,Panitia');
 
 // trvel

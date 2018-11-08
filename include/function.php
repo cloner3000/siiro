@@ -1,5 +1,12 @@
 <?php
 
+function cekAdmin($akses_level)
+{
+    if ($akses_level !== 'admin') {
+        header('Location: ../404.html');
+    }
+}
+
 function getRomawi($bln){
     switch ($bln){
     case 1: 

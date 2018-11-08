@@ -7,7 +7,7 @@
 		<br>
 		<?php
 		$xcrud->table('ais_peserta');
-		$xcrud->where('id =',$_SESSION['peseta_id']);
+		$xcrud->where('id =',$_SESSION['peserta_id']);
 
 		// kelompok
 		$xcrud->relation('kelompok','ais_kelompok','id','nama','periode_tahun = '.$ais_periode_tahun);
@@ -40,7 +40,7 @@
 	    $xcrud->unset_sortable();
 	    $xcrud->hide_button('save_return,return');
 	    $xcrud->after_update('redirectUpdatePes', 'custom_function.php'); 
-		echo $xcrud->render('edit',$_SESSION['peseta_id']);
+		echo $xcrud->render('edit',$_SESSION['peserta_id']);
 		?>
 	</div>
 </div>

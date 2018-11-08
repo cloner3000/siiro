@@ -1,6 +1,8 @@
 <?php 
 $page = 'ais_berangkat';
 include "../include/header.php";
+// cek akses
+cekAdmin($_SESSION['akses_level']);
 ?>
 
 <div class="w3-container">

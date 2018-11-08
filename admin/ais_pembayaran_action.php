@@ -1,6 +1,8 @@
 <?php
 include '../include/auth.php';
-include '../include/database.php';
+// cek akses
+cekAdmin($_SESSION['akses_level']);
+
 
 // aksi edit
 if(isset($_POST['submit'])){

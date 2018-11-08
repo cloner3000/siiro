@@ -1,6 +1,7 @@
 <?php
 include '../include/auth.php';
 include '../include/database.php';
+include '../include/function.php';
 include "../operator/xcrud.php";
 $xcrud = Xcrud::get_instance();
 

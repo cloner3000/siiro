@@ -1,5 +1,5 @@
 <?php  
-$id = $_SESSION['peseta_id'];
+$id = $_SESSION['peserta_id'];
 $data = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ais_peserta WHERE id = '$id' "));
 $ais_setting    = mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM ais_setting WHERE tahun = '$ais_periode_tahun'"));
 
@@ -25,24 +25,41 @@ if ($data['ikut_travel'] == 'Ya') {
 		<div class="w3-row">
 			<div class="w3-half w3-pale-green w3-padding w3-center">
 				<span class="w3-large">
-					Biaya Conference
+					Biaya Conference:
 					<br>
-					Rp. <span class="uang"><?php echo $ais_setting['biaya_conference']; ?></span>
+					<b>Rp. <span class="uang"><?php echo $biaya_conference; ?></span></b>
 				</span>
 			</div>
 			<div class="w3-half w3-pale-yellow w3-padding w3-center">
 				<span class="w3-large">
-					Sudah dibayar
+					Biaya travel:
 					<br>
-					Rp. <span class="uang"><?php echo $data['pembayaran']; ?></span>
+					<?php if ($data['ikut_travel'] == 'Ya') { ?>
+					<b>Rp. <span class="uang"><?php echo $biaya_travel; ?></span></b>
+					<?php }else{ ?>
+						<b>Tidak Ikut Travel</b>
+					<?php } ?>
 				</span>
 			</div>
 		</div>
+		<div class="w3-row w3-pale-blue w3-padding w3-center">
+			<span class="w3-large">
+					Sudah Dibayar:
+					<br>
+					Rp. <span class="uang"><?php echo $pembayaran; ?></span>
+				</span>
+		</div>
 		<div class="w3-row w3-pale-red w3-padding w3-center">
 			<span class="w3-large">
-					Sisa Pembayaran
+					Sisa Pembayaran:
 					<br>
-					Rp. <span class="uang"><?php echo $sisa_pembayaran; ?></span>
+					<b>
+						<?php if($sisa_pembayaran <= 0 ) {?>
+						Rp. <span class="w3-label">LUNAS</span>
+						<?php }else{ ?>
+						Rp. <span class="uang"><?php echo $sisa_pembayaran; ?></span>
+						<?php } ?>
+					</b>
 				</span>
 		</div>
 		<br>
@@ -56,6 +73,61 @@ if ($data['ikut_travel'] == 'Ya') {
 			}
 			?>
 		</ul>
+
+		<br>
+		<div class="w3-border">
+				<div class="w3-padding w3-theme">
+					<b>KELOMPOK</b>
+				</div>
+				<div class="w3-padding">
+					<p><b>Pembimbing</b></p>
+
+					<ul>
+						<?php
+						// mengeluarkan pembimbing 
+						$kelompoknya = $data['kelompok'];
+						$pembimbing_result = mysqli_query($conn,"SELECT * FROM ais_peserta WHERE status = 'Pembimbing' AND FIND_IN_SET('$kelompoknya', kelompok)");
+						foreach($pembimbing_result as $pembimbing){
+							?>
+							<li><?php echo $pembimbing['nama'] ?></li>
+						<?php } ?>
+					</ul>
+
+
+					<p><b>Anggota</b></p>
+					<ol>
+						<?php
+						$peserta_result = mysqli_query($conn,"SELECT * FROM ais_peserta WHERE status = 'Peserta' AND FIND_IN_SET('$kelompoknya', kelompok)");
+						foreach($peserta_result as $peserta){
+							?>
+							<li>
+								<?php echo $peserta['nama']; ?>
+								<?php
+
+								// menentukan luas atau tidak
+								if($peserta['ikut_travel'] == 'Ya'){
+									$sisa_pembayaran = ($biaya_conference + $biaya_travel) - $peserta['pembayaran'];
+									if($sisa_pembayaran <= 0){
+										echo '<span class="w3-round w3-green w3-tiny" style="padding:2px 4px 2px 4px">lunas</span> <i class="fa fa-plane"></i>';
+									}else{
+										echo '<span class="w3-round w3-red w3-tiny" style="padding:2px 4px 2px 4px">Belum Lunas</span> <i class="fa fa-plane"></i>';
+									}
+								}else{
+									$sisa_pembayaran = $biaya_conference - $peserta['pembayaran'];
+									if($sisa_pembayaran <= 0){
+										echo '<span class="w3-round w3-green w3-tiny" style="padding:2px 4px 2px 4px">Lunas</span>';
+									}else{
+										echo '<span class="w3-round w3-red w3-tiny" style="padding:2px 4px 2px 4px">Belum Lunas</span>';
+									}
+								}
+
+								?>
+							</li>
+						<?php } ?>
+					</ol>
+				</div>
+			</div>
+
 	</div>
 
 	<div class="w3-half">
@@ -64,7 +136,7 @@ if ($data['ikut_travel'] == 'Ya') {
 		</div>
 		<?php
 		$xcrud->table('ais_peserta');
-		$xcrud->where('id =',$_SESSION['peseta_id']);
+		$xcrud->where('id =',$_SESSION['peserta_id']);
 
 		// kelompok
 		$xcrud->relation('kelompok','ais_kelompok','id','nama','periode_tahun = '.$ais_periode_tahun);
@@ -90,7 +162,7 @@ if ($data['ikut_travel'] == 'Ya') {
 		$xcrud->unset_title();
 		$xcrud->unset_sortable();
 		$xcrud->hide_button('save_edit,return');
-		echo $xcrud->render('view',$_SESSION['peseta_id']);
+		echo $xcrud->render('view',$_SESSION['peserta_id']);
 		?>
 	</div>
 

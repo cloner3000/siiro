@@ -1,6 +1,7 @@
 <?php 
 include '../include/auth.php';
-include '../include/database.php';
+// cek akses
+cekAdmin($_SESSION['akses_level']);
 
 // jika ada id yang di GET
 if($_POST['id']){

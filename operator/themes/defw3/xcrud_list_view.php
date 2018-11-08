@@ -1,6 +1,6 @@
     <?php echo $this->render_table_name(); ?>
     <div class="xcrud-list-container">
-        <table class="xcrud-list w3-table table-striped table-hover table-bordered">
+        <table class="xcrud-list w3-table table-striped table-hover table-bordered w3-card">
             <thead>
                 <?php echo $this->render_grid_head('tr', 'th'); ?>
             </thead>

@@ -8,6 +8,8 @@
 	<a href="menu.php?page=detail" class="w3-bar-item w3-button <?php if($page_nama == 'menu.php?page=detail'){echo 'w3-theme';} ?>"><i class="fa fa-user w3-margin-right"></i>DETAIL</a>
 	<!-- Menu editprofile -->
 	<a href="menu.php?page=editprofile" class="w3-bar-item w3-button <?php if($page_nama == 'menu.php?page=editprofile'){echo 'w3-theme';} ?>"><i class="fa fa-edit w3-margin-right"></i>EDIT</a>
+	<!-- menu upload bukti -->
+	<a href="menu.php?page=upload_bukti" class="w3-bar-item w3-button <?php if($page_nama == 'menu.php?page=upload_bukti'){echo 'w3-theme';} ?>"><i class="fa fa-upload w3-margin-right"></i>UPLOAD BUKTI</a>
 	<?php } ?>
 	
 
@@ -98,7 +100,7 @@
 
 	<div class="w3-panel w3-theme w3-card w3-large" style="margin-top: 0px">
 
-		<button class="w3-button w3-theme w3-large w3-hide-large" onclick="w3_open()">&#9776;</button>
+		<button class="w3-button w3-theme w3-large w3-hide-large" onclick="w3_open()"><i class="fa fa-bars"></i></button>
 		<span class="w3-button w3-hide-small"><?php if(isset($title)){echo $title; }else{echo $setting['nama_website'];}?></span>
 		<button class="w3-button w3-right w3-theme-d4"><span class="w3-medium"><i class="fa fa-calendar"></i> <?php echo date('d-m-Y'); ?></span></button>
 	</div>

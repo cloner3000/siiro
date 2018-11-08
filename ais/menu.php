@@ -16,7 +16,12 @@ if (isset($_GET['page'])) {
 			include 'editprofile.php';
 			break;
 
+		case 'upload_bukti':
+			include 'upload_bukti.php';
+			break;
+
 		default:
+			echo '<div class="w3-padding w3-margin w3-red"><i class="fa fa-warning"></i> Halaman tidak di temukan</div>';
 			break;
 	}
 
