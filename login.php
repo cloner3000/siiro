@@ -33,9 +33,9 @@ $setting = mysqli_fetch_assoc(mysqli_query($conn,'SELECT * FROM setting LIMIT 1'
       $row = mysqli_fetch_assoc($result);
 
               // cek ais
-      $sql_ais = "SELECT * FROM ais_peserta WHERE email_kampus = '$user' AND password = '$pass2' ";
+      $sql_ais    = "SELECT * FROM ais_peserta WHERE email_kampus = '$user' AND password = '$pass2' ";
       $result_ais = mysqli_query($conn,$sql_ais);
-      $row_ais = mysqli_fetch_assoc($result_ais);
+      $row_ais    = mysqli_fetch_assoc($result_ais);
 
       if(mysqli_num_rows($result) > 0){
         $_SESSION['username'] = $user;
